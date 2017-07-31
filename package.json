@@ -1,0 +1,24 @@
+{
+  "name": "lunchbuddies",
+  "version": "1.0.0",
+  "description": "An app for setting up semi-random pairings",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RandomRobins/lunchbuddies.git"
+  },
+  "author": "Don Pham, Roscoe Bass & James Woodson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/RandomRobins/lunchbuddies/issues"
+  },
+  "homepage": "https://github.com/RandomRobins/lunchbuddies#readme",
+  "dependencies": {
+    "express": "^4.15.3",
+    "pg": "^7.0.2"
+  }
+}
