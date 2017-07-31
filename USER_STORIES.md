@@ -5,12 +5,13 @@
   * Julie also wants to track who has met with who to ensure that everyone has a chance to meet each other.
   * Julie would like the ability to input old pairing data to avoid unnecessary repeats.
   * Julie wants a simple interface to enter and remove employees as they join or leave her company.
-  * Even when everyone has had a chance to lunch with each other, Julie would like the application to continue to create new pairs that minimize overlap with previous pairings.
   * Julie would like her application to allow users to enter food preferences so that it can make restaurant suggestions for the pairs for their lunch meetings.
 
 ## Tracey - TA for Code Fellows Programming Courses
   * As a TA for Code Fellows, Tracy would like a better system for creating pair-programming partners in classes that she is working with.
   * Tracey would like the pair-making to be semi-automated to save her time in performing this task.
+  * Even when everyone has had a chance to group with each other, Tracey would like the application to continue to create new pairs that minimize overlap with previous pairings.
+  * Being a busy TA, Tracey would love for the application to persistently store form input, in case she needs to put aside her pair making and come back to it later.
 
 ## Bob - Debate Tournament Director
   * As a tournament director, Bob would like an application for pairing off competitors.
