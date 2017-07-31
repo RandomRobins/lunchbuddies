@@ -12,6 +12,7 @@
 * Being a busy TA, Tracey would love for the application to persistently store form input, in case she needs to put aside her pair making and come back to it later.
 
 ## Stretch Goals
+* As an added convenience, Tracey would like to be able to pull partner pairing output in a fashion that makes it easy to post the pairs in applications like Slack.
 * Even when everyone has had a chance to group with each other, Tracey would like the application to continue to create new pairs that minimize overlap with previous pairings.
 * Julie would like her application to allow users to enter food preferences so that it can make restaurant suggestions for the pairs for their lunch meetings.
 * Bob would like the ability to establish sub-groups (exclusion groups) so he could continue to automate random pairings after each competition round.
