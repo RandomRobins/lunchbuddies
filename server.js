@@ -29,17 +29,15 @@ function loadDB () {
     );`
   );
   client.query(`
-    CREATE TABLE IF NOT EXISTS round (
+    CREATE TABLE IF NOT EXISTS rounds (
       match_id SERIAL PRIMARY KEY,
-      round INT
+      round int
     );`
   );
   client.query(`
     CREATE TABLE IF NOT EXISTS matches (
       match_id int,
-      id int,
-      FOREIGN KEY (match_id) REFERENCES round(match_id),
-      FOREIGN KEY (id) REFERENCES roster(id)
+      id int
     );`
   );
 }
@@ -65,3 +63,39 @@ app.post('/roster', function(req, res) {
     }
   })
 })
+
+
+app.post('/matches', function(req, res) {
+
+  client.query(`
+    SELECT max(round) FROM rounds;
+    `)
+    .then(previousRound => {
+      previousRound.rows[0].max;
+    })
+})
+
+
+
+// app.post('/matches', function(req, res) {
+//   console.log(typeof(req.body.matches));
+//   [1,2].map(() => {
+//     let currentRound = client.query(`
+//         SELECT max(round) FROM rounds;
+//       `)
+//       .then()
+//     console.log('current round: ' + currentRound);
+//     client.query(`
+//       INSERT INTO rounds (round)
+//       VALUES (${currentRound})
+//       `,
+//     function (e) {
+//       if (e) {
+//         console.error(e);
+//       } else {
+//         res.send('insert complete');
+//       }
+//     })
+//   })
+//   console.log(84);
+// })
