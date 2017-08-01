@@ -30,6 +30,14 @@ function loadDB () {
   )
 }
 
+app.get('/roster', function(req, res) {
+  client.query(`
+    SELECT * FROM roster;
+    `)
+    .then(result => {res.send(result.rows); console.log(result.rows);})
+    .catch(console.error);
+})
+
 app.post('/roster', function(req, res) {
   client.query(`
     INSERT INTO roster(name)
