@@ -6,10 +6,7 @@ var app = app || {};
 
   let rosterController = {};
 
-  rosterController.addMember = function() {
-    console.log('working');
-    
-  }
+
 
 
 
