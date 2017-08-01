@@ -23,11 +23,25 @@ loadDB();
 
 function loadDB () {
   client.query(`
-    CREATE TABLE IF NOT EXISTS
-    roster (id SERIAL PRIMARY KEY,
-    name VARCHAR(255) UNIQUE NOT NULL
+    CREATE TABLE IF NOT EXISTS roster (
+      id SERIAL PRIMARY KEY,
+      name VARCHAR(255) UNIQUE NOT NULL
     );`
-  )
+  );
+  client.query(`
+    CREATE TABLE IF NOT EXISTS round (
+      match_id SERIAL PRIMARY KEY,
+      round INT
+    );`
+  );
+  client.query(`
+    CREATE TABLE IF NOT EXISTS matches (
+      match_id int,
+      id int,
+      FOREIGN KEY (match_id) REFERENCES round(match_id),
+      FOREIGN KEY (id) REFERENCES roster(id)
+    );`
+  );
 }
 
 app.get('/roster', function(req, res) {
