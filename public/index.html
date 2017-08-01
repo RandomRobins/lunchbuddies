@@ -8,6 +8,11 @@
     <link type="text/css" rel="stylesheet" href="styles/module.css">
     <link type="text/css" rel="stylesheet" href="styles/state.css">
     <link type="text/css" rel="stylesheet" href="styles/theme.css">
+
+    <script type="text/x-handlebars-template" id="hb-RosterTemplate">
+        <div class="roster" id="roster-{{id}}">{{name}}</div>
+    </script>
+
   </head>
   <body>
     <div class="page" id="splashPage">
@@ -19,13 +24,17 @@
     <div class="page" id="rosterPage">
       <form>
         <fieldset>
+          <legend>Current Members:</legend>
+          <div id="roster-display"></div>
+        </fieldset>
+        <fieldset>
           <legend>New Member:</legend>
             <input id="name" required="required" type="text" placeholder="Full Name">
             <button id="addMember">Add Member</button>
         </fieldset>
       </form>
+      <div class="page" id="pairsPage"></div>
     </div>
-    <div class="page" id="pairsPage"></div>
 
   </body>
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"
