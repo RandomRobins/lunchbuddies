@@ -2,7 +2,7 @@
 
 var app = app || {};
 
-page('/', app.initRosterView);
-page('/roster', app.initRosterView);
+page('/', app.rosterController);
+page('/roster', app.rosterController);
 
 page();

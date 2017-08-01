@@ -4,7 +4,13 @@ var app = app || {};
 
 (function (module) {
 
-  let rosterController = {};
+  function rosterController () {
+    app.Member.loadRoster(app.initRosterView)
+  };
+
+  rosterController.addMember = function() {
+    app.Member.addMember(app.rosterController);
+  }
 
 
 
