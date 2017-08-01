@@ -12,18 +12,20 @@ var app = app || {};
 
   Member.all = [];
 
-  Member.loadRoster = function () {
+  Member.loadRoster = function (callback) {
     $.get('/roster')
     .then(
       results => {
         Member.all = results.map(ele => new Member(ele));
+        callback();
       }
     )
   }
 
-  Member.addMember = function() {
-
-
+  Member.addMember = function(callback) {
+    $.post('/roster', {name :$('#name').val()}).then(
+      callback()
+    )
   }
 
   module.Member = Member;
