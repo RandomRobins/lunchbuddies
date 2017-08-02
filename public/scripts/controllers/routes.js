@@ -2,7 +2,7 @@
 
 var app = app || {};
 
-page('/', app.rosterController);
-page('/roster', app.rosterController);
+page('/', app.splashController);
+page('/roster/', app.rosterController);
 
 page();

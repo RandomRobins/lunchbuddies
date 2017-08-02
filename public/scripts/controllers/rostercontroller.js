@@ -6,7 +6,7 @@ var app = app || {};
 
   function rosterController () {
     app.Member.loadRoster(app.initRosterView)
-  };
+  }
 
   rosterController.addMember = function() {
     app.Member.addMember(app.rosterController);

@@ -1,6 +1,7 @@
 {
   "globals": {
-    "Handlebars": true
+    "Handlebars": true,
+    "page": true
   },
 
   "extends": "eslint:recommended",
