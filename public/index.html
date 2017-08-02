@@ -2,14 +2,14 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width-device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Lunch Buddies</title>
     <link type="text/css" rel="stylesheet" href="styles/normalize.css">
     <link type="text/css" rel="stylesheet" href="styles/base.css">
     <link type="text/css" rel="stylesheet" href="styles/layout.css">
     <link type="text/css" rel="stylesheet" href="styles/module.css">
-    <link type="text/css" rel="stylesheet" href="styles/state.css">
     <link type="text/css" rel="stylesheet" href="styles/theme.css">
+    <link type="text/css" rel="stylesheet" href="styles/state.css">
     <link type="text/css" rel="stylesheet" href="vendor/style.css">
 
     <script type="text/x-handlebars-template" id="hb-RosterTemplate">
@@ -18,13 +18,23 @@
 
   </head>
   <body>
-    <nav id="main-nav">
-      <span class="icon-menu" id="hamburger"></span>
+
+    <nav class="main-nav">
+      <div class="icon-menu"></div>
       <ul>
+        <li><a href="/about">About Us</a></li>
+        <li><a href="/roster">Member Roster</a></li>
+      </ul>
+    </nav>
+
+    <!-- <nav class="main-nav clearfix">
+      <div class="icon-menu"></div>
+      <ul id="menu">
         <a href="/about"><li>About Us</li></a>
         <a href="/roster"><li>Member Roster</li></a>
       </ul>
-    </nav>
+    </nav> -->
+
     <div class="page" id="splashPage">
       <h1>Hello!  Welcome to Lunch Buddies!</h1>
       <a href="/roster">Create Groups</a>
