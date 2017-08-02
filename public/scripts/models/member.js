@@ -9,8 +9,9 @@ var app = app || {};
     this.id = rawDataObj.id;
     this.active = true;
     Member.byID[rawDataObj.id] = (this);
-    Member.priorityOrder.push(this.id);
+    Member.idList.push(this.id);
     this.exclusion = [];
+    this.options = [];
     $.get('/checkrecord/' + this.id)
     .then(
       results => {
@@ -25,8 +26,8 @@ var app = app || {};
   Member.all = [];
   // access Member objects by ID number
   Member.byID = []
-  // indexes of objects by order of who has the fewest choices first
-  Member.priorityOrder = []
+  // all IDs of all members
+  Member.idList = []
 
   Member.loadRoster = function (callback) {
     $.get('/roster')
