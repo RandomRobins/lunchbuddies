@@ -9,6 +9,7 @@
     <link type="text/css" rel="stylesheet" href="styles/module.css">
     <link type="text/css" rel="stylesheet" href="styles/state.css">
     <link type="text/css" rel="stylesheet" href="styles/theme.css">
+    <link type="text/css" rel="stylesheet" href="vendor/style.css">
 
     <script type="text/x-handlebars-template" id="hb-RosterTemplate">
         <div class="roster" id="roster-{{id}}">{{name}}</div>
@@ -16,6 +17,14 @@
 
   </head>
   <body>
+    <nav id="main-nav">
+      <span class="icon-menu" id="hamburger"></span>
+      <ul>
+        <a href="/about"><li>About Us</li></a>
+        <a href="/roster"><li>Member Roster</li></a>
+        <a href="/matches"><li>Match Creator</li></a>
+      </ul>
+    </nav>
     <div class="page" id="splashPage">
       <h1>Hello!  Welcome to Lunch Buddies!</h1>
       <a href="/roster">Create Groups</a>
