@@ -4,29 +4,27 @@ var app = app || {};
 
 (function (module) {
 
-  module.resetWTIA = function () {
-    $.getJSON('data/wtia.json').then(
-      function (data) {
-        let members = data[0];
-        let groups = data[1];
-        let pastMatches = data[2];
-        let recentMatch = data[3];
-        members.forEach(function(person){
-          $.post('/roster', {name :person}).then(app.rosterController())
-        })
-        $.post('/matches', {matches: recentMatch})
-      })
+  module.addGroup = function(user_id, group_id) {
+    $.post('/subgroups', {user:user_id, group:group_id}).then()
   }
 
-})(app);
+  module.resetWTIA = function () {
+    $.get('/reset').then(
+      $.getJSON('data/wtia.json').then(
+        function (data) {
+          let members = data[0];
+          let groups = data[1];
+          let recentMatch = data[2];
+          members.forEach(function(person){
+            $.post('/roster', {name :person}).then(app.rosterController())
+          })
+          groups.forEach(function(membership){
+            $.post('/subgroups', {user:membership[0], group:membership[1]}).then()
+          })
+          $.post('/matches', {matches: recentMatch})
+        })
+    )
+  }
 
-//
-// app.get('/reset', function(req, res) {
-//   client.query(`
-//     DROP TABLE roster;
-//     DROP TABLE rounds;
-//     DROP TABLE matches;
-//     `)
-//     .then(result => {res.send(result.rows)})
-//     .catch(console.error);
-// })
+
+})(app);

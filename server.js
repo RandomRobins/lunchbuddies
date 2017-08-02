@@ -70,22 +70,40 @@ app.post('/roster', function(req, res) {
   })
 })
 
+app.post('/subgroups', function(req, res) {
+  client.query(`
+    INSERT INTO subgroups(user_id, group_id)
+    VALUES ($1, $2);
+    `,[req.body.user, req.body.group],
+  function (e) {
+    if (e) {
+      // console.error(e);
+    } else {
+      res.send('insert complete');
+    }
+  })
+})
+
+
 // for test purposes only
+
 app.get('/reset', function(req, res) {
-  // DROP TABLE rounds;
-  // DROP TABLE matches;
   client.query(`
     DROP TABLE roster;
+    DROP TABLE matches;
+    DROP TABLE rounds;
+    DROP TABLE subgroups;
     `)
-    .then(result => {res.send(result.rows)})
-    .catch(console.error);
+    .then(loadDB());
 })
 
 app.get('/checkrecord/*', function(req, res) {
-  console.log('68');
-  // when a user ID is entered as a params URL, return a list of users who should not be matched with this user
+  // when a user ID is entered as a params URL, return a list of users who are either in the same department, or who have been matched up with the user before
   client.query(`
-    SELECT user_id FROM matches WHERE match_id in (SELECT match_id FROM matches WHERE user_id=${req.params[0]}) and user_id not in (SELECT user_id FROM subgroups WHERE group_id =(SELECT group_id FROM subgroups WHERE user_id=${req.params[0]}));
+    SELECT user_id FROM matches WHERE match_id in
+    (SELECT match_id FROM matches WHERE user_id=${req.params[0]}) or user_id in
+    (SELECT user_id FROM subgroups WHERE group_id=
+      (SELECT group_id FROM subgroups WHERE user_id=${req.params[0]}));
     `)
     .then(result => {
       res.send(result)
@@ -104,6 +122,7 @@ app.post('/matches', function(req, res) {
       insertMatches(round, match, req.body.matches);
     })
 })
+
 
 function insertMatches(maxRound, maxMatch, matches) {
   for (var i=0; i < matches.length; i++) {
