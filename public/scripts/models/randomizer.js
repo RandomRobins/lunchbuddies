@@ -34,24 +34,28 @@ var matchDictionary = { '0': [ 13, 20 ],
   Random.allGroups = {}
   Random.byID = {}
 
+// generate a list of members who are active
   Random.memberActive = function() {
     return(app.Member.all.filter(function(member){
       return(member.active);
     }))
   }
 
+// generate list of ids from members list
   Random.memberActiveID = function(memberArray) {
     return(memberArray.map(function(member) {
       return(member.id);
     }))
   }
 
+// edit key values in dictory so that members can be accessed by id
   Random.setByID = function(ids, members) {
     members.forEach(function(member) {
       Random.byID[member.id] = member;
     })
   }
 
+// checks options for each user
   Random.insertOptions = function(idlist, memberlist) {
     memberlist.forEach(function(member) {
       var options = idlist.slice(0)
@@ -73,6 +77,7 @@ var matchDictionary = { '0': [ 13, 20 ],
     })
   }
 
+// maps an array where members are sorted by the number of options they have. the ones with the fewest options go first.
   Random.sortPriority = function(tempArray) {
     tempArray.sort(function(a, b) {
       return(Random.byID[a].options.length - Random.byID[b].options.length)
@@ -80,18 +85,21 @@ var matchDictionary = { '0': [ 13, 20 ],
     return(tempArray)
   }
 
+// takes a list of indexes and returns the people with no options
   Random.noOptions = function(tempArray) {
     return tempArray.filter(function(id) {
       return !Random.byID[id].options.length;
     })
   }
 
+// takes a list of indexes and returns the people with at least one option
   Random.someOptions = function(tempArray) {
     return tempArray.filter(function(id) {
       return Random.byID[id].options.length;
     })
   }
 
+// generate pairs by calling all the functions created above
   Random.findPairs = function (memberArray) {
     var activeMembers = Random.memberActive();
     var memberIDs = Random.memberActiveID(activeMembers);
@@ -100,21 +108,27 @@ var matchDictionary = { '0': [ 13, 20 ],
     var seenEveryone = [];
     var partnered = []
     app.Random.setByID(memberIDs, activeMembers)
+    // people with no options left will go last
     seenEveryone = seenEveryone.concat(Random.noOptions(memberIDs))
     if (seenEveryone.length) {
       memberIDs = Random.someOptions(memberIDs)
     }
     var tempMatches = [];
     while (memberIDs.length >= 2) {
+      // check again to see if anyone lacks options
       seenEveryone.concat(Random.noOptions(memberIDs))
       memberIDs = Random.someOptions(memberIDs)
       if (memberIDs.length >= 2) {
+        // resort the list
         var sortedIDs = Random.sortPriority(memberIDs);
+        // the first person in the sorted list will have the fewest options
         var first = sortedIDs[0];
         var firstOptions = Random.byID[first].options;
+        // randomly pick a valid partner for the first person
         let r = Math.floor(Math.random() * firstOptions.length);
         var second = firstOptions[r];
         var secondOptions = Random.byID[second].options;
+        // remove the first and second person from every option list they are in
         firstOptions.forEach(function(nonpartnerID) {
           let nonpartner = Random.byID[nonpartnerID];
           nonpartner.options.splice(nonpartner.options.indexOf(first), 1)
@@ -123,14 +137,17 @@ var matchDictionary = { '0': [ 13, 20 ],
           let nonpartner = Random.byID[nonpartnerID];
           nonpartner.options.splice(nonpartner.options.indexOf(first), 1)
         })
+        // add the match to the list and remove them from the index
         tempMatches.push([first, second]);
         memberIDs.splice(memberIDs.indexOf(first), 1);
         memberIDs.splice(memberIDs.indexOf(second), 1);
+        // if there's one person left..
       } else if (memberIDs.length == 1) {
+        // if the seenEveryone list is odd, just add the last member to that list
         if (seenEveryone.length % 2) {
-
           seenEveryone.concat(memberIDs);
         } else {
+          // if there is an odd number of people, prepare for one group of three
           trio.push(memberIDs[0]);
         }
         memberIDs = [];
@@ -147,6 +164,7 @@ var matchDictionary = { '0': [ 13, 20 ],
       seenEveryone.splice(0, 1);
       seenEveryone.splice(r, 1);
     }
+    // add the odd person out to a random group
     if (trio.length ) {
       let r = Math.floor(Math.random() * tempMatches.length);
       tempMatches[r].push(trio[0])
