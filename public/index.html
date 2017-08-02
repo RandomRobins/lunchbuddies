@@ -2,45 +2,63 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Lunch Buddies</title>
-    <link type="text/css" rel="stylesheet" href="styles/normalize.css">
-    <link type="text/css" rel="stylesheet" href="styles/base.css">
-    <link type="text/css" rel="stylesheet" href="styles/layout.css">
-    <link type="text/css" rel="stylesheet" href="styles/module.css">
-    <link type="text/css" rel="stylesheet" href="styles/state.css">
-    <link type="text/css" rel="stylesheet" href="styles/theme.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link type="text/css" rel="stylesheet" href="/styles/normalize.css">
+    <link type="text/css" rel="stylesheet" href="/styles/base.css">
+    <link type="text/css" rel="stylesheet" href="/styles/layout.css">
+    <link type="text/css" rel="stylesheet" href="/styles/module.css">
+    <link type="text/css" rel="stylesheet" href="/styles/state.css">
+    <link type="text/css" rel="stylesheet" href="/styles/theme.css">
+    <link type="text/css" rel="stylesheet" href="/vendor/style.css">
 
     <script type="text/x-handlebars-template" id="hb-RosterTemplate">
         <div class="roster" id="roster-{{id}}">{{name}}</div>
     </script>
 
+    <script type="text/x-handlebars-template" id="hb-RosterSelectionTemplate">
+        <div class="roster" id="selection-roster-{{id}}">{{name}}</div>
+    </script>
+
+
   </head>
   <body>
+
+    <nav class="main-nav">
+      <div class="icon-menu"></div>
+      <ul>
+        <li><a href="/about">About Us</a></li>
+        <li><a href="/roster">Member Roster</a></li>
+      </ul>
+    </nav>
+
     <div class="page" id="splashPage">
       <h1>Hello!  Welcome to Lunch Buddies!</h1>
       <a href="/roster">Create Groups</a>
-      <a href="/roster">About the Creators</a>
+      <a href="/about">About the Creators</a>
     </div>
 
     <div class="page" id="aboutPage">
       <h1>Random Robins</h1>
       <section>
         <article id="profile1">
-          <img src="assets/Superman-facebook.svg.png" alt="A splitting image of Don"></img>
+          <div class="borderedIMG" id="don"></div>
           <h4>Don Pham</h4>
           <p>The screen on Surface is as good as the iPad despite my Ultrabook looks like a Mac except it is cheaper on the contrary you don’t actually need a Retina display because of Surface is the ultimate tablet, furthermore Macs are too expensive thus why shouldn’t the Microsoft store look like the Apple store since the iPad is boring, generally Apple stole from Xerox when Apple won’t let you do anything with their computers, consequently Apple is closed and ossified, approaching petrified overall people will start developing for the new Windows soon, as a result Apple is so boring, in the beginning Windows Phone 8 is much better than Windows Phone 7, another point is that you can’t upgrade a Mac naturally you can’t get Office on an iPad due to Retina is just a made-up Apple name to sum up Windows Phone is beautiful, once no other operating system is better than Windows, moreover the same power for half the money, for example the iPhone is too expensive, so enterprise will always need Windows, but you can’t play games on a Mac at the end no compromise.</p>
         </article>
       </section>
       <section>
         <article id="profile2">
-          <img src="assets/BobaFett.png" alt="James in his work attire"></img>
+          <div class="borderedIMG" id="james"><img src="assets/james.jpg" alt="picture of James"></img></div>
           <h4>James Woodson</h4>
           <p>Lucas ipsum dolor sit amet pweck davin joh charal kathol derlin dantooine dat dalonbian gricho. Doldur antemeridian kalarba porkins utapau. Ventress kir boss zuckuss droopy. Paaerduag dantooine chistori desolous mantell. Amidala dor tono iridonian thisspias moore. Beru iv wilhuff darpa quarren metalorn. Bane lyn jinn fel kendal vratix tc-14 annoo kyp. Rune sulorine mas triclops. Kenobi nunb falleen wyl. Malastare anakin durge calamari nien vader. R2-d2 garm cordé aruzan irek. Max mas sneevel ric askajian jamillia yuuzhan. Rom rendar kessel desolous olié plagueis amanin leia kaminoan. Palowick fett farlax jek khai defel wyl ysanne. Terentatek jade gand zhell drall iv skywalker hallotan finis. Tyranus endor rattataki senesca shado sly. Dalonbian dexter iv saurin bothan cabasshite cbaoth quinlan di. Stass vima-da-boda ruwee artaru sarn san. Offee antilles hutt kwi shiido. Calamari roonan malastare vader tavion massassi biggs. Tapani wirutid sanyassan paaerduag mimbanite. Bail dagobah valorum bajic tibor bormea. Voxyn jabiimas dormé maul shadda bespin metalorn vuffi allana.</p>
         </article>
       </section>
       <section>
         <article id="profile3">
-          <img src="assets/totoro.png" alt="Roscoe's mug shot"></img>
+          <div class="borderedIMG" id="roscoe"><img src="assets/roscoe.jpg" alt="Roscoe's mug shot"></img></div>
           <h4>Roscoe Bass III</h4>
           <p>Prow scuttle parrel provost Sail ho shrouds spirits boom mizzenmast yardarm. Pinnace holystone mizzenmast quarter crow's nest nipperkin grog yardarm hempen halter furl. Swab barque interloper chantey doubloon starboard grog black jack gangway rutters. Deadlights jack lad schooner scallywag dance the hempen jig carouser broadside cable strike colors. Bring a spring upon her cable holystone blow the man down spanker Shiver me timbers to go on account lookout wherry doubloon chase. Belay yo-ho-ho keelhaul squiffy black spot yardarm spyglass sheet transom heave to. Trysail Sail ho Corsair red ensign hulk smartly boom jib rum gangway. Case shot Shiver me timbers gangplank crack Jennys tea cup ballast Blimey lee snow crow's nest rutters. Fluke jib scourge of the seven seas boatswain schooner gaff booty Jack Tar transom spirits.</p>
         </article>
@@ -58,8 +76,13 @@
             <input id="name" required="required" type="text" placeholder="Full Name">
             <button id="addMember">Add Member</button>
         </fieldset>
+        <a href="/matches"><button>Match Page</button></a>
       </form>
-      <div class="page" id="pairsPage"></div>
+    </div>
+    <div class="page" id="matchesPage">
+      <h3>Click on a name to toggle inclusion in current matches</h3>
+      <div id="rosterSelection"></div>
+      <button id="getMatches">Generate Matches</button>
     </div>
 
   </body>
@@ -69,17 +92,17 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.min.js">
   </script>
   <script src="https://cdn.rawgit.com/visionmedia/page.js/master/page.js"></script>
-  <script src="scripts/models/member.js"></script>
-  <script src="scripts/models/matches.js"></script>
-  <script src="scripts/views/aboutView.js"></script>
-  <script src="scripts/views/pairView.js"></script>
-  <script src="scripts/views/rosterView.js"></script>
-  <script src="scripts/views/splashView.js"></script>
-  <script src="scripts/controllers/aboutcontroller.js"></script>
-  <script src="scripts/controllers/paircontroller.js"></script>
-  <script src="scripts/controllers/rostercontroller.js"></script>
-  <script src="scripts/controllers/splashcontroller.js"></script>
-  <script src="scripts/controllers/routes.js"></script>
-  <script src="scripts/models/reset.js"></script>
-  <script src="scripts/models/randomizer.js"></script>
+  <script src="/scripts/models/member.js"></script>
+  <script src="/scripts/models/matches.js"></script>
+  <script src="/scripts/views/aboutView.js"></script>
+  <script src="/scripts/views/matchesView.js"></script>
+  <script src="/scripts/views/rosterView.js"></script>
+  <script src="/scripts/views/splashView.js"></script>
+  <script src="/scripts/controllers/aboutcontroller.js"></script>
+  <script src="/scripts/controllers/matchescontroller.js"></script>
+  <script src="/scripts/controllers/rostercontroller.js"></script>
+  <script src="/scripts/controllers/splashcontroller.js"></script>
+  <script src="/scripts/controllers/routes.js"></script>
+  <script src="/scripts/models/reset.js"></script>
+  <script src="/scripts/models/randomizer.js"></script>
 </html>
