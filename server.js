@@ -56,7 +56,18 @@ app.get('/roster', function(req, res) {
     .catch(console.error);
 })
 
+app.post('/checkname', function(req, res) {
+  console.log('checking for: ', req.body.name);
+  client.query(`
+    SELECT * FROM roster WHERE name='${req.body.name}';
+    `)
+    .then(result => {res.send(result.rows)})
+    .catch(console.error);
+})
+
+
 app.post('/roster', function(req, res) {
+  console.log('attempting: ', req.body.name);
   client.query(`
     INSERT INTO roster(name)
     VALUES ('${req.body.name}');

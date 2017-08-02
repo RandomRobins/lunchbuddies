@@ -12,15 +12,15 @@ var app = app || {};
     Member.idList.push(this.id);
     this.exclusion = [];
     this.options = [];
-    $.get('/checkrecord/' + this.id)
-    .then(
-      results => {
-        // Member.byID[id] = [results];
-        this.exclusion = results.rows.map(function(element){
-          return(element.user_id);
-        })
-      }
-    )
+    // $.get('/checkrecord/' + this.id)
+    // .then(
+    //   results => {
+    //     // Member.byID[id] = [results];
+    //     this.exclusion = results.rows.map(function(element){
+    //       return(element.user_id);
+    //     })
+    //   }
+    // )
   }
 
   Member.all = [];
@@ -40,8 +40,13 @@ var app = app || {};
   }
 
   Member.addMember = function(callback) {
-    $.post('/roster', {name :$('#name').val()}).then(
-      callback()
+    $.post('/checkname', {name :$('#name').val()})
+    .then(function(results) {
+      if (!results.length) {
+        $.post('/roster', {name :$('#name').val()}).then(
+          callback())
+      }
+    }
     )
   }
 
