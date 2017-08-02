@@ -1,14 +1,14 @@
 'use strict';
 
-var app = app || { '1': [ 1, 5, 13, 18 ],
+var app = app || {};
+
+var groupsDictionary = { '1': [ 1, 5, 13, 18 ],
   '2': [ 2, 6, 19, 22, 26, 30 ],
   '3': [ 3, 4, 24, 25, 32 ],
   '4': [ 9, 17, 21 ],
   '5': [ 7, 10, 12, 14, 20, 29 ],
   '6': [ 16, 23, 27, 28 ],
   '7': [ 11, 15, 31 ] };
-
-var groupsDictionary = {};
 var matchDictionary = { '0': [ 13, 20 ],
   '1': [ 19, 12 ],
   '2': [ 7, 1 ],
@@ -32,6 +32,7 @@ var matchDictionary = { '0': [ 13, 20 ],
 
   Random.allMatches = {}
   Random.allGroups = {}
+  Random.byID = {}
 
   Random.memberActive = function() {
     return(app.Member.all.filter(function(member){
@@ -43,6 +44,12 @@ var matchDictionary = { '0': [ 13, 20 ],
     return(memberArray.map(function(member) {
       return(member.id);
     }))
+  }
+
+  Random.setByID = function(ids, members) {
+    members.forEach(function(member) {
+      Random.byID[member.id] = member;
+    })
   }
 
   Random.insertOptions = function(idlist, memberlist) {
@@ -68,30 +75,31 @@ var matchDictionary = { '0': [ 13, 20 ],
 
   Random.sortPriority = function(tempArray) {
     tempArray.sort(function(a, b) {
-      return(app.Member.byID[a].options.length - app.Member.byID[b].options.length)
+      return(Random.byID[a].options.length - Random.byID[b].options.length)
     })
     return(tempArray)
   }
 
   Random.noOptions = function(tempArray) {
-    return tempArray.filter(function(member) {
-      return !member.options.length;
+    return tempArray.filter(function(id) {
+      return !Random.byID[id].options.length;
     })
   }
 
   Random.someOptions = function(tempArray) {
-    return tempArray.filter(function(member) {
-      return member.options.length;
+    return tempArray.filter(function(id) {
+      return Random.byID[id].options.length;
     })
   }
 
   Random.findPairs = function (memberArray) {
     var activeMembers = Random.memberActive();
     var memberIDs = Random.memberActiveID(activeMembers);
-    Random.insertOptionsn(memberIDs, activeMembers);
+    Random.insertOptions(memberIDs, activeMembers);
     var trio = [];
     var seenEveryone = [];
     var partnered = []
+    app.Random.setByID(memberIDs, activeMembers)
     seenEveryone = seenEveryone.concat(Random.noOptions(memberIDs))
     if (seenEveryone.length) {
       memberIDs = Random.someOptions(memberIDs)
@@ -103,23 +111,24 @@ var matchDictionary = { '0': [ 13, 20 ],
       if (memberIDs.length >= 2) {
         var sortedIDs = Random.sortPriority(memberIDs);
         var first = sortedIDs[0];
-        var firstOptions = app.Member.byID[first].options;
+        var firstOptions = Random.byID[first].options;
         let r = Math.floor(Math.random() * firstOptions.length);
         var second = firstOptions[r];
-        var secondOptions = app.Member.byID[second].options;
+        var secondOptions = Random.byID[second].options;
         firstOptions.forEach(function(nonpartnerID) {
-          let nonpartner = app.Member.byID[nonpartnerID];
+          let nonpartner = Random.byID[nonpartnerID];
           nonpartner.options.splice(nonpartner.options.indexOf(first), 1)
         })
         secondOptions.forEach(function(nonpartnerID) {
-          let nonpartner = app.Member.byID[nonpartnerID];
+          let nonpartner = Random.byID[nonpartnerID];
           nonpartner.options.splice(nonpartner.options.indexOf(first), 1)
         })
         tempMatches.push([first, second]);
-        memberIDs.splice(memberIDs.options.indexOf(first), 1);
-        memberIDs.splice(memberIDs.options.indexOf(second), 1);
+        memberIDs.splice(memberIDs.indexOf(first), 1);
+        memberIDs.splice(memberIDs.indexOf(second), 1);
       } else if (memberIDs.length == 1) {
         if (seenEveryone.length % 2) {
+
           seenEveryone.concat(memberIDs);
         } else {
           trio.push(memberIDs[0]);
@@ -127,7 +136,7 @@ var matchDictionary = { '0': [ 13, 20 ],
         memberIDs = [];
       }
     }
-    if (!seenEveryone.length % 2) {
+    if (seenEveryone.length % 2) {
       let r = Math.floor(Math.random() * seenEveryone.length);
       trio.push(seenEveryone[r]);
       seenEveryone.splice(r, 1);
@@ -138,10 +147,11 @@ var matchDictionary = { '0': [ 13, 20 ],
       seenEveryone.splice(0, 1);
       seenEveryone.splice(r, 1);
     }
-    if (trio.length) {
+    if (trio.length ) {
       let r = Math.floor(Math.random() * tempMatches.length);
       tempMatches[r].push(trio[0])
     }
     return(tempMatches)
   }
+  module.Random = Random;
 })(app);
