@@ -2,9 +2,23 @@ body {
   background-color: hsl(142, 83%, 76%);
 }
 
+ul {
+  list-style: none;
+}
 
+.borderedIMG {
+  border-style: outset;
+  background-size: cover;
+}
 
+#don {
+  content: url("../assets/don.jpg");
+}
 
-@media only screen and (min-width: 600px) {
+#james {
+  content: url("../assets/james.jpg");
+}
 
+#roscoe {
+  content: url("../assets/roscoe.jpg");
 }
