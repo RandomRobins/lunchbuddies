@@ -4,17 +4,22 @@
     <meta charset="utf-8">
     <title>Lunch Buddies</title>
     <meta name="viewport" content="width-device-width, initial-scale=1">
-    <link type="text/css" rel="stylesheet" href="styles/normalize.css">
-    <link type="text/css" rel="stylesheet" href="styles/base.css">
-    <link type="text/css" rel="stylesheet" href="styles/layout.css">
-    <link type="text/css" rel="stylesheet" href="styles/module.css">
-    <link type="text/css" rel="stylesheet" href="styles/state.css">
-    <link type="text/css" rel="stylesheet" href="styles/theme.css">
-    <link type="text/css" rel="stylesheet" href="vendor/style.css">
+    <link type="text/css" rel="stylesheet" href="/styles/normalize.css">
+    <link type="text/css" rel="stylesheet" href="/styles/base.css">
+    <link type="text/css" rel="stylesheet" href="/styles/layout.css">
+    <link type="text/css" rel="stylesheet" href="/styles/module.css">
+    <link type="text/css" rel="stylesheet" href="/styles/state.css">
+    <link type="text/css" rel="stylesheet" href="/styles/theme.css">
+    <link type="text/css" rel="stylesheet" href="/vendor/style.css">
 
     <script type="text/x-handlebars-template" id="hb-RosterTemplate">
         <div class="roster" id="roster-{{id}}">{{name}}</div>
     </script>
+
+    <script type="text/x-handlebars-template" id="hb-RosterSelectionTemplate">
+        <div class="roster" id="selection-roster-{{id}}">{{name}}</div>
+    </script>
+
 
   </head>
   <body>
@@ -23,7 +28,6 @@
       <ul>
         <a href="/about"><li>About Us</li></a>
         <a href="/roster"><li>Member Roster</li></a>
-        <a href="/matches"><li>Match Creator</li></a>
       </ul>
     </nav>
     <div class="page" id="splashPage">
@@ -68,8 +72,13 @@
             <input id="name" required="required" type="text" placeholder="Full Name">
             <button id="addMember">Add Member</button>
         </fieldset>
+        <a href="/matches"><button>Match Page</button></a>
       </form>
-      <div class="page" id="pairsPage"></div>
+    </div>
+    <div class="page" id="matchesPage">
+      <h3>Click on a name to toggle inclusion in current matches</h3>
+      <div id="rosterSelection"></div>
+      <button id="getMatches">Generate Matches</button>
     </div>
 
   </body>
@@ -79,16 +88,16 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.min.js">
   </script>
   <script src="https://cdn.rawgit.com/visionmedia/page.js/master/page.js"></script>
-  <script src="scripts/models/member.js"></script>
-  <script src="scripts/models/matches.js"></script>
-  <script src="scripts/views/aboutView.js"></script>
-  <script src="scripts/views/pairView.js"></script>
-  <script src="scripts/views/rosterView.js"></script>
-  <script src="scripts/views/splashView.js"></script>
-  <script src="scripts/controllers/aboutcontroller.js"></script>
-  <script src="scripts/controllers/paircontroller.js"></script>
-  <script src="scripts/controllers/rostercontroller.js"></script>
-  <script src="scripts/controllers/splashcontroller.js"></script>
-  <script src="scripts/controllers/routes.js"></script>
-  <script src="scripts/models/reset.js"></script>
+  <script src="/scripts/models/member.js"></script>
+  <script src="/scripts/models/matches.js"></script>
+  <script src="/scripts/views/aboutView.js"></script>
+  <script src="/scripts/views/matchesView.js"></script>
+  <script src="/scripts/views/rosterView.js"></script>
+  <script src="/scripts/views/splashView.js"></script>
+  <script src="/scripts/controllers/aboutcontroller.js"></script>
+  <script src="/scripts/controllers/matchescontroller.js"></script>
+  <script src="/scripts/controllers/rostercontroller.js"></script>
+  <script src="/scripts/controllers/splashcontroller.js"></script>
+  <script src="/scripts/controllers/routes.js"></script>
+  <script src="/scripts/models/reset.js"></script>
 </html>
