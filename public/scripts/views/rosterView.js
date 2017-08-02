@@ -11,6 +11,7 @@ var app = app || {};
     $('#roster-display').empty();
     $('.page').hide();
     $('#rosterPage').show();
+
     $('.main-nav').show();
     app.Member.all.map(function(member) {
       let rosterCompiler = Handlebars.compile($('#hb-RosterTemplate').html());
