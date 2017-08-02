@@ -100,13 +100,12 @@ var matchDictionary = { '0': [ 13, 20 ],
   }
 
 // generate pairs by calling all the functions created above
-  Random.findPairs = function (memberArray) {
+  Random.findPairs = function () {
     var activeMembers = Random.memberActive();
     var memberIDs = Random.memberActiveID(activeMembers);
     Random.insertOptions(memberIDs, activeMembers);
     var trio = [];
     var seenEveryone = [];
-    var partnered = []
     app.Random.setByID(memberIDs, activeMembers)
     // people with no options left will go last
     seenEveryone = seenEveryone.concat(Random.noOptions(memberIDs))

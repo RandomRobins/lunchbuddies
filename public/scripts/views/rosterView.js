@@ -9,8 +9,9 @@ var app = app || {};
 
   let initRosterView = function () {
     $('#roster-display').empty();
-    $('#rosterPage').show().siblings().hide();
-    $('#main-nav').show();
+    $('.page').hide();
+    $('#rosterPage').show();
+    $('.main-nav').show();
     app.Member.all.map(function(member) {
       let rosterCompiler = Handlebars.compile($('#hb-RosterTemplate').html());
       let compiledRoster = rosterCompiler(member);

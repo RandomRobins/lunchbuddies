@@ -12,6 +12,7 @@ var app = app || {};
       let compiledRoster = rosterCompiler(member);
       $('#rosterSelection').append(compiledRoster);
     })
+    $('#getMatches').on('click', app.matchesController.getMatches);
   }
 
   module.initMatchesView = initMatchesView;

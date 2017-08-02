@@ -7,5 +7,9 @@ var app = app || {};
     app.initMatchesView();
   }
 
+  matchesController.getMatches = function () {
+    app.Random.findPairs();
+  }
+
   module.matchesController = matchesController;
 })(app);
