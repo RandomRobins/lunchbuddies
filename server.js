@@ -146,7 +146,7 @@ function insertMatches(maxRound, maxMatch, matches) {
         `,
       function (e) {
         if (e) {
-          console.error(e);
+          console.error('e');
         } else {
           // res.send('insert complete');
         }
