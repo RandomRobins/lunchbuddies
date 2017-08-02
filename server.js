@@ -7,8 +7,8 @@ const pg = require('pg');
 const PORT = process.env.PORT || 3000;
 const app = express();
 
-// const conString = 'postgres://localhost:5432/lunchbuddies'
-const conString = process.env.conString || `postgres://postgres:${process.env.PG_PASSWORD}@localhost:5432/lunchbuddies`;
+const conString = 'postgres://localhost:5432/lunchbuddies'
+// const conString = process.env.conString || `postgres://postgres:${process.env.PG_PASSWORD}@localhost:5432/lunchbuddies`;
 const client = new pg.Client(conString);
 client.connect();
 client.on('error', err => console.error(err));
@@ -37,7 +37,13 @@ function loadDB () {
   client.query(`
     CREATE TABLE IF NOT EXISTS matches (
       match_id int,
-      id int
+      user_id int
+    );`
+  );
+  client.query(`
+    CREATE TABLE IF NOT EXISTS subgroups (
+      group_id int,
+      user_id int
     );`
   );
 }
@@ -64,38 +70,87 @@ app.post('/roster', function(req, res) {
   })
 })
 
+app.post('/subgroups', function(req, res) {
+  client.query(`
+    INSERT INTO subgroups(user_id, group_id)
+    VALUES ($1, $2);
+    `,[req.body.user, req.body.group],
+  function (e) {
+    if (e) {
+      // console.error(e);
+    } else {
+      res.send('insert complete');
+    }
+  })
+})
+
+
+// for test purposes only
+
+app.get('/reset', function(req, res) {
+  client.query(`
+    DROP TABLE roster;
+    DROP TABLE matches;
+    DROP TABLE rounds;
+    DROP TABLE subgroups;
+    `)
+    .then(loadDB());
+})
+
+app.get('/checkrecord/*', function(req, res) {
+  // when a user ID is entered as a params URL, return a list of users who are either in the same department, or who have been matched up with the user before
+  client.query(`
+    SELECT user_id FROM matches WHERE match_id in
+    (SELECT match_id FROM matches WHERE user_id=${req.params[0]}) or user_id in
+    (SELECT user_id FROM subgroups WHERE group_id=
+      (SELECT group_id FROM subgroups WHERE user_id=${req.params[0]}));
+    `)
+    .then(result => {
+      res.send(result)
+    })
+    .catch(console.error);
+})
 
 app.post('/matches', function(req, res) {
-
   client.query(`
-    SELECT max(round) FROM rounds;
-    `)
-    .then(previousRound => {
-      previousRound.rows[0].max;
+    SELECT max(round) as round, max(match_id) as match FROM rounds;
+    `).then(results => {
+      let round = results.rows[0].round || 0;
+      let match = results.rows[0].match || 0;
+      round++;
+      match++;
+      insertMatches(round, match, req.body.matches);
     })
 })
 
 
-
-// app.post('/matches', function(req, res) {
-//   console.log(typeof(req.body.matches));
-//   [1,2].map(() => {
-//     let currentRound = client.query(`
-//         SELECT max(round) FROM rounds;
-//       `)
-//       .then()
-//     console.log('current round: ' + currentRound);
-//     client.query(`
-//       INSERT INTO rounds (round)
-//       VALUES (${currentRound})
-//       `,
-//     function (e) {
-//       if (e) {
-//         console.error(e);
-//       } else {
-//         res.send('insert complete');
-//       }
-//     })
-//   })
-//   console.log(84);
-// })
+function insertMatches(maxRound, maxMatch, matches) {
+  for (var i=0; i < matches.length; i++) {
+    client.query(`
+      INSERT INTO rounds(round)
+      VALUES ('${maxRound}');
+      `,
+    function (e) {
+      if (e) {
+        console.error(e);
+      } else {
+        // res.send('insert complete');
+      }
+    })
+    for (let p=0; p < matches[i].length; p++) {
+      let currentMatch = maxMatch + i
+      let person = matches[i][p]
+      client.query(`
+        INSERT INTO matches(match_id, user_id)
+        VALUES ('${currentMatch}', '${person}');
+        `,
+      function (e) {
+        if (e) {
+          console.error(e);
+        } else {
+          // res.send('insert complete');
+        }
+      })
+    }
+  }
+}
