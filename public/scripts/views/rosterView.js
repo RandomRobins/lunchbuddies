@@ -10,7 +10,7 @@ var app = app || {};
   let initRosterView = function () {
     $('#roster-display').empty();
     $('#rosterPage').show().siblings().hide();
-    $('#roster-display').empty();
+    $('#main-nav').show();
     app.Member.all.forEach(function(member) {
       let rosterCompiler = Handlebars.compile($('#hb-RosterTemplate').html());
       let compiledRoster = rosterCompiler(member);
