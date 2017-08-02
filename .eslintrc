@@ -2,6 +2,7 @@
   "globals": {
     "Handlebars": true,
     "res": true,
+    "page": true
   },
 
   "extends": "eslint:recommended",
