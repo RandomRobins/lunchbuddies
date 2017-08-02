@@ -28,5 +28,14 @@ var app = app || {};
     )
   }
 
+  Member.previous = function () {
+    $.get('/checkrecord/' + 3)
+    .then(
+      results => {
+        console.log(results)
+      }
+    )
+  }
+
   module.Member = Member;
 })(app);
