@@ -15,25 +15,25 @@
   height: 3.2em;
 }
 
-.inactive {
+.match-inactive {
   background-color: rgba(0, 0, 0, 0.4);
   text-decoration: line-through;
   border: 5px solid red;
   color: white;
 }
 
-.match-inactive {
+.inactive {
   display: none;
 }
 
-.active {
+.match-active {
   background-color: rgba(255, 255, 255, 0.7);
   text-decoration: none;
   border: 5px solid green;
   color: black;
 }
 
-.match-active {
+.active {
   display: inline-block;
   background-color: rgba(255, 255, 255, 0.7);
   text-decoration: none;
