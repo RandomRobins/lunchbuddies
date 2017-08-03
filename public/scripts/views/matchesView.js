@@ -14,14 +14,22 @@ var app = app || {};
       $('#rosterSelection').append(compiledRoster);
     })
     $('#getMatches').on('click', app.matchesController.getMatches);
+    app.rosterChangeActivation();
   }
 
   function displayMatches(matches) {
-    let nameByIndex = app.Member.byID.map(function (ele) {
-      return ele.name;
+    matches = matches.map(function(match) {
+      match = match.map(function(personID) {
+        return app.Member.byID[personID].name
+      })
+      return match.join(' && ')
     })
-    let matchByName = matches.map(match => match.map(i => nameByIndex[i]))
-    $('#matchResults').empty().html(matchByName.join('<br>'));
+    $('#freshMatchResults').empty()
+    matches.forEach(function(match) {
+      let li = $('<li></li>').attr('class', 'freshpair');
+      li.text(match)
+      $('#freshMatchResults').append(li)
+    })
   }
 
   module.displayMatches = displayMatches;
