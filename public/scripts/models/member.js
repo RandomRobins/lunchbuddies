@@ -22,7 +22,7 @@ var app = app || {};
   Member.idList = []
 
   Member.loadRoster = function (callback) {
-    $.get('/roster')
+    $.get('/api.roster')
     .then(
       results => {
         Member.all = results.map(ele => new Member(ele));
@@ -32,10 +32,10 @@ var app = app || {};
   }
 
   Member.addMember = function(callback) {
-    $.post('/checkname', {name :$('#name').val()})
+    $.post('/api.checkname', {name :$('#name').val()})
     .then(function(results) {
       if (!results.length) {
-        $.post('/roster', {name :$('#name').val()}).then(
+        $.post('/api.roster', {name :$('#name').val()}).then(
           function() {
             if (Member.all.length) {
               let currentID = Member.all[Member.all.length - 1].id + 1;

@@ -10,7 +10,6 @@ var app = app || {};
 
   rosterController.addMember = function(e) {
     e.preventDefault();
-    console.log(e);
     app.Member.addMember(app.rosterController);
   }
 
