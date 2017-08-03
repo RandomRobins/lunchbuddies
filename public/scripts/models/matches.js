@@ -12,6 +12,9 @@ var app = app || {};
   module.groupHistory = {};
 
   function loadPreviousMatches (callback) {
+    if (!app.Member.all.length) {
+      app.Member.loadRoster(()=>{})
+    }
     $.get('/api.checkmatches')
     .then(function(results) {
       let data = results.rows;
