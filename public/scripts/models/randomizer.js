@@ -73,6 +73,7 @@ var matchDictionary = { '0': [ 13, 20 ],
       options = options.filter(function(partner) {
         return (!exclude.includes(partner));
       })
+      member.exclusion = exclude;
       member.options = options;
     })
   }
@@ -113,9 +114,9 @@ var matchDictionary = { '0': [ 13, 20 ],
       memberIDs = Random.someOptions(memberIDs)
     }
     var tempMatches = [];
-    while (memberIDs.length >= 2) {
+    while (memberIDs.length > 0) {
       // check again to see if anyone lacks options
-      seenEveryone.concat(Random.noOptions(memberIDs))
+      seenEveryone = seenEveryone.concat(Random.noOptions(memberIDs))
       memberIDs = Random.someOptions(memberIDs)
       if (memberIDs.length >= 2) {
         // resort the list
@@ -139,19 +140,26 @@ var matchDictionary = { '0': [ 13, 20 ],
         // add the match to the list and remove them from the index
         tempMatches.push([first, second]);
         memberIDs.splice(memberIDs.indexOf(first), 1);
-        memberIDs.splice(memberIDs.indexOf(second), 1);
+        memberIDs.splice(memberIDs.indexOf(second), 1)
         // if there's one person left..
-      } else if (memberIDs.length == 1) {
+      } else {
+        console.log(130, memberIDs);
+        console.log(131, seenEveryone);
         // if the seenEveryone list is odd, just add the last member to that list
+        console.log(147);
         if (seenEveryone.length % 2) {
+          console.log(149);
           seenEveryone.concat(memberIDs);
         } else {
           // if there is an odd number of people, prepare for one group of three
           trio.push(memberIDs[0]);
+          console.log(153, ' ', trio);
+          console.log(156, memberIDs);
         }
         memberIDs = [];
       }
     }
+    console.log(seenEveryone);
     if (seenEveryone.length % 2) {
       let r = Math.floor(Math.random() * seenEveryone.length);
       trio.push(seenEveryone[r]);
@@ -164,6 +172,7 @@ var matchDictionary = { '0': [ 13, 20 ],
       seenEveryone.splice(r, 1);
     }
     // add the odd person out to a random group
+    console.log(trio);
     if (trio.length ) {
       let r = Math.floor(Math.random() * tempMatches.length);
       tempMatches[r].push(trio[0])
