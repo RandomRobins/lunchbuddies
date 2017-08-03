@@ -22,7 +22,7 @@
   color: white;
 }
 
-.match-inactive {
+.inactive {
   display: none;
 }
 
@@ -33,7 +33,7 @@
   color: black;
 }
 
-.match-active {
+.active {
   display: inline-block;
   background-color: hsla(0, 0%, 100%, 0.7);
   text-decoration: none;

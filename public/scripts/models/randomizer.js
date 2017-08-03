@@ -188,7 +188,7 @@ var matchDictionary = { '0': [ 13, 20 ],
         tempMatches[r].push(triperson)
       }
     }
-    return(tempMatches)
+    return([tempMatches, extraMatches])
   }
   module.Random = Random;
 })(app);

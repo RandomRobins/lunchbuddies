@@ -16,7 +16,7 @@ var app = app || {};
       $('#roster-display').append(compiledRoster);
     })
     $('#addMember').on('click', app.rosterController.addMember);
-    app.rosterChangeActivation();
+    // app.rosterChangeActivation();
   }
 
   module.initRosterView = initRosterView
