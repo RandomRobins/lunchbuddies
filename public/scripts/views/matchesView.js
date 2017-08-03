@@ -13,13 +13,9 @@ var app = app || {};
       let compiledRoster = rosterCompiler(member);
       $('#rosterSelection').append(compiledRoster);
     })
+    $('#getMatches').off('click', app.matchesController.getMatches);
     $('#getMatches').on('click', app.matchesController.getMatches);
     app.rosterChangeActivation();
-    funkyFreshToggle();
-    saveMatchToDatabase()
-  }
-
-  function funkyFreshToggle() {
     $('#funkyfresh').on('click', function() {
       let text = $('#funkyfresh').text()
       if (text == 'Showing All Matches') {
@@ -30,24 +26,9 @@ var app = app || {};
         $('.funkypair').css('display','block');
       }
     });
+    $('#savematches').off('click', app.matchesController.postMatches);
+    $('#savematches').on('click', app.matchesController.postMatches);
   }
-
-  function saveMatchToDatabase() {
-    $('#savematches').on('click', function() {
-      if (app.latestMatch) {
-        var matchToSave;
-        if ($('#funkyfresh').text() == 'Showing All Matches') {
-          matchToSave = app.latestMatch[0].concat(app.latestMatch[1])
-        } else {
-          matchToSave = app.latestMatch[0];
-        }
-        $.post('/api.checkname', {name :matchToSave})
-        .then(function() {
-          app.latestMatch = null;
-        })}
-    })
-  }
-
 
 
   function displayMatches(matchesAll) {

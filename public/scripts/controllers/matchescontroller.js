@@ -12,5 +12,10 @@ var app = app || {};
     app.displayMatches(app.latestMatch);
   }
 
+  matchesController.postMatches = function (e) {
+    e.preventDefault();
+    app.postMatches(app.matchesController);
+  }
+
   module.matchesController = matchesController;
 })(app);

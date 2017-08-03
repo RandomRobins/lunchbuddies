@@ -44,6 +44,23 @@ var app = app || {};
     .then(callback);
   }
 
+  function postMatches(callback) {
+    if (app.latestMatch) {
+      var matchToSave;
+      if ($('#funkyfresh').text() == 'Showing All Matches') {
+        matchToSave = app.latestMatch[0].concat(app.latestMatch[1])
+      } else {
+        matchToSave = app.latestMatch[0];
+      }
+      $.post('/api.matches', {matches: matchToSave})
+      .then(function() {
+        app.latestMatch = null;
+        callback();
+      })
+    }
+  }
+
+  module.postMatches = postMatches;
   module.loadPreviousMatches = loadPreviousMatches;
   module.insertMatches = insertMatches;
 })(app);
