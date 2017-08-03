@@ -16,7 +16,7 @@ In large companies there often will be people or groups of people that do not in
   
 ## Technologies Used
 
-Lunch Buddies uses jQuery(utilizing MVC file structure), HTML and CSS(SMACSS file structure) and Handlebars (HTML templating) to create a single-page application on the client side, along with a reponsive, mobile-first UI.  A Node.js server interacts with the API we created through queries made to the PostgreSQL database. Deployed via Heroku, and planned/implemented over a weeklong dash.
+Lunch Buddies uses jQuery(utilizing MVC file structure), HTML and CSS(SMACSS file structure) and Handlebars (HTML templating) to create a single-page application on the client side, along with a reponsive, mobile-first UI.  We are using an API we created with Node.js to interact with a PostgresSQL database on our backend, deployed via Heroku, and planned/implemented over a weeklong dash.
 
 ## James C. Woodson
 
