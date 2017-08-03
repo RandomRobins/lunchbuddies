@@ -8,7 +8,8 @@ var app = app || {};
   }
 
   matchesController.getMatches = function () {
-    app.displayMatches(app.Random.findPairs());
+    app.latestMatch = app.Random.findPairs()
+    app.displayMatches(app.latestMatch);
   }
 
   module.matchesController = matchesController;
