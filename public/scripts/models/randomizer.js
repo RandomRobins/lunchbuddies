@@ -134,7 +134,7 @@ var matchDictionary = { '0': [ 13, 20 ],
         })
         secondOptions.forEach(function(nonpartnerID) {
           let nonpartner = Random.byID[nonpartnerID];
-          nonpartner.options.splice(nonpartner.options.indexOf(first), 1)
+          nonpartner.options.splice(nonpartner.options.indexOf(second), 1)
         })
         // add the match to the list and remove them from the index
         tempMatches.push([first, second]);

@@ -4,11 +4,11 @@ var app = app || {};
 
 (function (module) {
   let matchesController = function () {
-    app.initMatchesView();
+    app.loadPreviousMatches(app.initMatchesView);
   }
 
   matchesController.getMatches = function () {
-    app.Random.findPairs();
+    app.displayMatches(app.Random.findPairs());
   }
 
   module.matchesController = matchesController;
