@@ -6,7 +6,6 @@ var app = app || {};
   function rosterChangeActivation() {
     $('.roster').on('click', function() {
       let thisID = parseInt($(this).attr('id').split('-')[2]);
-      console.log(9, thisID);
       if ($(this).attr('class') == 'roster match-active') {
         // alert(thisID)
         // alert(app.Member.all.length)
