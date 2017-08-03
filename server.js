@@ -95,6 +95,16 @@ app.post('/subgroups', function(req, res) {
   })
 })
 
+app.get('/checkgroups', function(req, res) {
+  client.query(`
+    SELECT user_id, group_id FROM subgroups;
+    `)
+    .then(result => {
+      res.send(result)
+    })
+    .catch(console.error);
+})
+
 
 // for test purposes only
 
@@ -105,7 +115,8 @@ app.get('/reset', function(req, res) {
     DROP TABLE rounds;
     DROP TABLE subgroups;
     `)
-    .then(loadDB());
+    .then(loadDB())
+    .then(result => res.send(result));
 })
 
 app.get('/checkrecord/*', function(req, res) {
@@ -131,9 +142,18 @@ app.post('/matches', function(req, res) {
       round++;
       match++;
       insertMatches(round, match, req.body.matches);
-    })
+    }).then(result => res.send(result))
 })
 
+app.get('/checkmatches', function(req, res) {
+  client.query(`
+    SELECT match_id, user_id FROM matches;
+    `)
+    .then(result => {
+      res.send(result)
+    })
+    .catch(console.error);
+})
 
 function insertMatches(maxRound, maxMatch, matches) {
   for (var i=0; i < matches.length; i++) {
