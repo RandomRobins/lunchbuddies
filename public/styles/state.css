@@ -1,3 +1,16 @@
 .main-nav:hover ul {
   display: block;
 }
+
+#roster:active {
+  position: relative;
+  border-bottom: 4px;
+  border-right: 1px;
+  box-shadow: 0px 0px 0px #888888;
+  transition: all ease 0.2s;
+}
+
+#about:active {
+  box-shadow: 0px 0px 0px #888888;
+  transition: all ease 0.2s;
+}
