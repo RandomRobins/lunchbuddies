@@ -8,19 +8,11 @@ var app = app || {};
     this.name = rawDataObj.name;
     this.id = rawDataObj.id;
     this.active = true;
+    this.status = 'active';
     Member.byID[rawDataObj.id] = (this);
     Member.idList.push(this.id);
     this.exclusion = [];
     this.options = [];
-    // $.get('/checkrecord/' + this.id)
-    // .then(
-    //   results => {
-    //     // Member.byID[id] = [results];
-    //     this.exclusion = results.rows.map(function(element){
-    //       return(element.user_id);
-    //     })
-    //   }
-    // )
   }
 
   Member.all = [];
@@ -44,7 +36,16 @@ var app = app || {};
     .then(function(results) {
       if (!results.length) {
         $.post('/roster', {name :$('#name').val()}).then(
-          callback())
+          function() {
+            if (Member.all.length) {
+              let currentID = Member.all[Member.all.length - 1].id + 1;
+              Member.all.push(new Member({name: ('#name').val(), id: currentID}))
+            }
+            callback();
+          }
+        )
+      } else {
+        alert('Name already in system.');
       }
     }
     )
