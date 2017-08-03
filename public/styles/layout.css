@@ -1,5 +1,15 @@
+a #matchPageButton {
+  position: absolute;
+  left: 25em;
+  margin-top: 0;
+}
+
 a {
   text-decoration: none;
+}
+
+h1 {
+  text-align: center;
 }
 
 ul {
@@ -18,7 +28,10 @@ li {
 }
 
 .main-nav {
+  display: inline-block;
   padding: 0.2em;
+  width: 20em;
+  margin-right: 0;
 }
 
 .main-nav ul {
@@ -34,6 +47,14 @@ li {
   font-size: 1.3em;
   padding: .5em .2em;
   border-bottom: 1px solid #ccc;
+}
+
+#profile2 {
+  margin-top: 7%;
+}
+
+#profile3 {
+  margin-top: 5%;
 }
 
 @media only screen and (min-width: 600px) {

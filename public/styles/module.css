@@ -15,8 +15,8 @@
   height: 3.2em;
 }
 
-.match-inactive {
-  background-color: rgba(0, 0, 0, 0.4);
+.inactive {
+  background-color: hsla(0, 0%, 0%, 0.4);
   text-decoration: line-through;
   border: 5px solid red;
   color: white;
@@ -26,8 +26,8 @@
   display: none;
 }
 
-.match-active {
-  background-color: rgba(255, 255, 255, 0.7);
+.active {
+  background-color: hsla(0, 0%, 100%, 0.7);
   text-decoration: none;
   border: 5px solid green;
   color: black;
@@ -35,10 +35,36 @@
 
 .active {
   display: inline-block;
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: hsla(0, 0%, 100%, 0.7);
   text-decoration: none;
   border: 5px solid green;
   color: black;
+}
+
+#roster {
+  position: relative;
+  top: 5em;
+  height: 10em;
+  width: 15em;
+  max-width: 50em;
+  margin-right: 1em;
+  display: inline-block;
+  border-radius: 15% 5%;
+  box-shadow: 10px 10px 5px #888888;
+  background-color: hsla(102, 75%, 41%, 0.8);
+}
+
+#about {
+  position: relative;
+  top: 10em;
+  height: 10em;
+  width: 15em;
+  max-width: 50em;
+  display: inline-block;
+  border-radius: 5% 15%;
+  margin-left: 1em;
+  box-shadow: 10px 10px 5px #888888;
+  background-color: hsla(241, 69%, 30%, 0.8);
 }
 
 @media only screen and (min-width: 300px) {

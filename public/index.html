@@ -6,6 +6,7 @@
     <title>Lunch Buddies</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Milonga" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="/styles/normalize.css">
     <link type="text/css" rel="stylesheet" href="/styles/base.css">
     <link type="text/css" rel="stylesheet" href="/styles/layout.css">
@@ -35,9 +36,10 @@
     </nav>
 
     <div class="page" id="splashPage">
-      <h1 id="splashTitle">Hello!  Welcome to Lunch Buddies!</h1>
-      <a href="/roster">Create Groups</a>
-      <a href="/about">About the Creators</a>
+      <h1 id="splashTitle">Lunch<br>Buddies!</h1>
+      <hr>
+      <a class="splashButton" href="/roster"><div id="roster">Create Groups</div></a>
+      <a class="splashButton" href="/about"><div id="about">About the Creators</div></a>
     </div>
 
     <div class="page" id="aboutPage">
@@ -46,36 +48,38 @@
         <article id="profile1">
           <div class="borderedIMG" id="don"></div>
           <h4>Don Pham</h4>
-          <p>The screen on Surface is as good as the iPad despite my Ultrabook looks like a Mac except it is cheaper on the contrary you don’t actually need a Retina display because of Surface is the ultimate tablet, furthermore Macs are too expensive thus why shouldn’t the Microsoft store look like the Apple store since the iPad is boring, generally Apple stole from Xerox when Apple won’t let you do anything with their computers, consequently Apple is closed and ossified, approaching petrified overall people will start developing for the new Windows soon, as a result Apple is so boring, in the beginning Windows Phone 8 is much better than Windows Phone 7, another point is that you can’t upgrade a Mac naturally you can’t get Office on an iPad due to Retina is just a made-up Apple name to sum up Windows Phone is beautiful, once no other operating system is better than Windows, moreover the same power for half the money, for example the iPhone is too expensive, so enterprise will always need Windows, but you can’t play games on a Mac at the end no compromise.</p>
+          <p>I graduated from the UW with a degree in Comparative History of Ideas and a focus in media theory.  I've spent the past decade working in ethnic media, where I managed to shoot and edit over 200 news clips in a language he does not understand.  I am grateful for WTIA’s Apprenti program for taking a chance on someone from a non-traditional background.</p>
         </article>
       </section>
       <section>
         <article id="profile2">
           <div class="borderedIMG" id="james"><img src="assets/james.jpg" alt="picture of James"></img></div>
           <h4>James Woodson</h4>
-          <p>Lucas ipsum dolor sit amet pweck davin joh charal kathol derlin dantooine dat dalonbian gricho. Doldur antemeridian kalarba porkins utapau. Ventress kir boss zuckuss droopy. Paaerduag dantooine chistori desolous mantell. Amidala dor tono iridonian thisspias moore. Beru iv wilhuff darpa quarren metalorn. Bane lyn jinn fel kendal vratix tc-14 annoo kyp. Rune sulorine mas triclops. Kenobi nunb falleen wyl. Malastare anakin durge calamari nien vader. R2-d2 garm cordé aruzan irek. Max mas sneevel ric askajian jamillia yuuzhan. Rom rendar kessel desolous olié plagueis amanin leia kaminoan. Palowick fett farlax jek khai defel wyl ysanne. Terentatek jade gand zhell drall iv skywalker hallotan finis. Tyranus endor rattataki senesca shado sly. Dalonbian dexter iv saurin bothan cabasshite cbaoth quinlan di. Stass vima-da-boda ruwee artaru sarn san. Offee antilles hutt kwi shiido. Calamari roonan malastare vader tavion massassi biggs. Tapani wirutid sanyassan paaerduag mimbanite. Bail dagobah valorum bajic tibor bormea. Voxyn jabiimas dormé maul shadda bespin metalorn vuffi allana.</p>
+          <p>I grew up in West Seattle and have lived most of my life in the greater Seattle area. With a Bachelor's of Science in Biochemistry from the University of Washington, most of my professional experience has been in research. Over time I found that the favorite part of my work was scripting data analyses in R and other programming-related tasks, so making the transition into the tech industry seemed like a sound move to make.</p>
         </article>
       </section>
       <section>
         <article id="profile3">
           <div class="borderedIMG" id="roscoe"><img src="assets/roscoe.jpg" alt="Roscoe's mug shot"></img></div>
           <h4>Roscoe Bass III</h4>
-          <p>Prow scuttle parrel provost Sail ho shrouds spirits boom mizzenmast yardarm. Pinnace holystone mizzenmast quarter crow's nest nipperkin grog yardarm hempen halter furl. Swab barque interloper chantey doubloon starboard grog black jack gangway rutters. Deadlights jack lad schooner scallywag dance the hempen jig carouser broadside cable strike colors. Bring a spring upon her cable holystone blow the man down spanker Shiver me timbers to go on account lookout wherry doubloon chase. Belay yo-ho-ho keelhaul squiffy black spot yardarm spyglass sheet transom heave to. Trysail Sail ho Corsair red ensign hulk smartly boom jib rum gangway. Case shot Shiver me timbers gangplank crack Jennys tea cup ballast Blimey lee snow crow's nest rutters. Fluke jib scourge of the seven seas boatswain schooner gaff booty Jack Tar transom spirits.</p>
+          <p>I've done much with my 35 years of life so far, including but not limited to: a dance instructor, a Navy Air Traffic Controller, a banker for a number of banks, a pest control technician, and most recently a boxing coach and instructor.  Through my vast experiences, I've learned that I attract to occupations that include a nice mix of math, problem solving, and helping others.  Which is why I'm now pursuing a career in software development.  I'm thankful to Apprenti for giving me a chance to walk this path, a chance I doubt I would've gotten without them.</p>
         </article>
       </section>
     </div>
 
     <div class="page" id="rosterPage">
       <form>
+        <a href="/matches"><button id="matchPageButton">Match Page</button></a>
+        <p><b>Use the form below to add new members</b></p>
         <div id="roster-display"></div>
         <fieldset>
           <legend>New Member:</legend>
             <input id="name" required="required" type="text" placeholder="Full Name">
             <button id="addMember">Add Member</button>
         </fieldset>
-        <a href="/matches"><button>Match Page</button></a>
       </form>
     </div>
+
     <div class="page" id="matchesPage">
       <button id="getMatches">Generate Matches</button>
       <div class="roster matchtoggle" id="funkyfresh">Showing All Matches</div>
