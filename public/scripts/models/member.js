@@ -39,7 +39,7 @@ var app = app || {};
           function() {
             if (Member.all.length) {
               let currentID = Member.all[Member.all.length - 1].id + 1;
-              Member.all.push(new Member({name: ('#name').val(), id: currentID}))
+              Member.all.push(new Member({name: $('#name').val(), id: currentID}))
             }
             callback();
           }
