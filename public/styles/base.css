@@ -8,11 +8,20 @@ h1 {
   text-align: center;
 }
 
-#splashTitle {
+#splashPage {
   display: flex;
   align-items: center;
   justify-content: center;
-  max-width: 50%;
+}
+
+#splashTitle {
+  justify-content: center;
+}
+
+.splashButton {
+  color: black;
+  font-weight: bold;
+  justify-content: center;
 }
 
 .page {

@@ -41,6 +41,28 @@
   color: black;
 }
 
+#roster {
+  position: relative;
+  top: 10em;
+  height: 10em;
+  width: 15em;
+  max-width: 50em;
+  display: inline-block;
+  border-radius: 15% 5%;
+  background-color: hsla(102, 75%, 41%, 0.8);
+}
+
+#about {
+  position: relative;
+  top: 15em;
+  height: 10em;
+  width: 15em;
+  max-width: 50em;
+  display: inline-block;
+  border-radius: 5% 15%;
+  background-color: hsla(241, 69%, 30%, 0.8);
+}
+
 @media only screen and (min-width: 300px) {
   .roster {
     width: 48%;

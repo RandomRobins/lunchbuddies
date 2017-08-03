@@ -37,8 +37,8 @@
 
     <div class="page" id="splashPage">
       <h1 id="splashTitle">Lunch <br> Buddies!</h1>
-      <div id="roster"><a href="/roster">Create Groups</a></div>
-      <div id="about"><a href="/about">About the Creators</a></div>
+      <a class="splashButton" href="/roster"><div id="roster">Create Groups</div></a>
+      <a class="splashButton" href="/about"><div id="about">About the Creators</div></a>
     </div>
 
     <div class="page" id="aboutPage">
@@ -68,13 +68,14 @@
 
     <div class="page" id="rosterPage">
       <form>
+        <a href="/matches"><button id="matchPageButton">Match Page</button></a>
+        <p><b>Use the form below to add new members</b></p>
         <div id="roster-display"></div>
         <fieldset>
           <legend>New Member:</legend>
             <input id="name" required="required" type="text" placeholder="Full Name">
             <button id="addMember">Add Member</button>
         </fieldset>
-        <a href="/matches"><button>Match Page</button></a>
       </form>
     </div>
 
