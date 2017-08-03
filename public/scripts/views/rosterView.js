@@ -4,9 +4,6 @@ var app = app || {};
 
 (function (module) {
 
-
-
-
   let initRosterView = function () {
     $('#roster-display').empty();
     $('.page').hide();
