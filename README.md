@@ -13,6 +13,10 @@ In large companies there often will be people or groups of people that do not in
   * Help prevent a 'clique' mentality from forming.
   * Encourage innovation by bringing together people with varying ideas and viewpoints.
   * Help foster transparency and respect.
+  
+## Technologies Used
+
+Lunch Buddies uses jQuery(utilizing MVP file structure), HTML and CSS(SMACSS file structure) and Handlebars (HTML templating) to create a single-page application on the client side, along with a reponsive, mobile-first UI.  A Node.js server interacts with the API we created through queries made to the PostgreSQL database. Deployed via Heroku, and planned/implemented over a weeklong dash.
 
 ## James C. Woodson
 
