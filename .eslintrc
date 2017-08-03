@@ -1,4 +1,10 @@
 {
+  "globals": {
+    "Handlebars": true,
+    "res": true,
+    "page": true
+  },
+
   "extends": "eslint:recommended",
   "parserOptions": {
     "ecmaVersion": 6,

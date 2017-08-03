@@ -1,0 +1,39 @@
+body {
+  margin: auto 1em;
+}
+
+h1 {
+  font-family: 'Milonga', cursive;
+  font-size: 3em;
+  display: block;
+}
+
+img {
+  float: left;
+  margin: 10px;
+}
+
+#splashPage {
+  max-width: 100%
+}
+
+div hr { 
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}
+
+.splashButton {
+  color: hsla(50, 94%, 79%, 0.86);
+  position: relative;
+  left: 35%;
+  font-family: 'Milonga', cursive;
+  font-size: 1em;
+  font-weight: bold;
+  line-height: 10em;
+  text-align: center;
+}
+
+.page {
+  display: none;
+}
