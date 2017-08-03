@@ -4,9 +4,6 @@ var app = app || {};
 
 (function (module) {
 
-
-
-
   let initRosterView = function () {
     $('#roster-display').empty();
     $('.page').hide();
@@ -19,7 +16,7 @@ var app = app || {};
       $('#roster-display').append(compiledRoster);
     })
     $('#addMember').on('click', app.rosterController.addMember);
-    rosterChangeActivation();
+    app.rosterChangeActivation();
   }
 
   module.initRosterView = initRosterView

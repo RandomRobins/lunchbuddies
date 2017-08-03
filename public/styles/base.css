@@ -1,3 +1,18 @@
 body {
   margin: auto 1em;
 }
+
+h1 {
+  text-align: center;
+}
+
+#splashTitle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 50%;
+}
+
+.page {
+  display: none;
+}

@@ -7,8 +7,8 @@ const pg = require('pg');
 const PORT = process.env.PORT || 3000;
 const app = express();
 
-const conString = 'postgres://localhost:5432/lunchbuddies'
-// const conString = process.env.conString || `postgres://postgres:${process.env.PG_PASSWORD}@localhost:5432/lunchbuddies`;
+// const conString = 'postgres://localhost:5432/lunchbuddies'
+const conString = process.env.conString || `postgres://postgres:${process.env.PG_PASSWORD}@localhost:5432/lunchbuddies`;
 const client = new pg.Client(conString);
 client.connect();
 client.on('error', err => console.error(err));
@@ -21,7 +21,6 @@ app.listen(PORT, () => console.log(`app listening on port: ${PORT}`));
 
 loadDB();
 
-// app.get('/*', (request, response) => response.sendFile('index.html', {root: './public'}));
 
 function loadDB () {
   client.query(`
@@ -50,7 +49,7 @@ function loadDB () {
   );
 }
 
-app.get('/roster', function(req, res) {
+app.get('/api.roster', function(req, res) {
   client.query(`
     SELECT * FROM roster;
     `)
@@ -58,7 +57,7 @@ app.get('/roster', function(req, res) {
     .catch(console.error);
 })
 
-app.post('/checkname', function(req, res) {
+app.post('/api.checkname', function(req, res) {
   console.log('checking for: ', req.body.name);
   client.query(`
     SELECT * FROM roster WHERE name='${req.body.name}';
@@ -68,7 +67,7 @@ app.post('/checkname', function(req, res) {
 })
 
 
-app.post('/roster', function(req, res) {
+app.post('/api.roster', function(req, res) {
   console.log('attempting: ', req.body.name);
   client.query(`
     INSERT INTO roster(name)
@@ -83,7 +82,7 @@ app.post('/roster', function(req, res) {
   })
 })
 
-app.post('/subgroups', function(req, res) {
+app.post('/api.subgroups', function(req, res) {
   client.query(`
     INSERT INTO subgroups(user_id, group_id)
     VALUES ($1, $2);
@@ -97,7 +96,7 @@ app.post('/subgroups', function(req, res) {
   })
 })
 
-app.get('/checkgroups', function(req, res) {
+app.get('/api.checkgroups', function(req, res) {
   client.query(`
     SELECT user_id, group_id FROM subgroups;
     `)
@@ -110,7 +109,7 @@ app.get('/checkgroups', function(req, res) {
 
 // for test purposes only
 
-app.get('/reset', function(req, res) {
+app.get('/api.reset', function(req, res) {
   client.query(`
     DROP TABLE roster;
     DROP TABLE matches;
@@ -121,7 +120,7 @@ app.get('/reset', function(req, res) {
     .then(result => res.send(result));
 })
 
-app.get('/checkrecord/*', function(req, res) {
+app.get('/api.checkrecord/*', function(req, res) {
   // when a user ID is entered as a params URL, return a list of users who are either in the same department, or who have been matched up with the user before
   client.query(`
     SELECT user_id FROM matches WHERE match_id in
@@ -135,7 +134,7 @@ app.get('/checkrecord/*', function(req, res) {
     .catch(console.error);
 })
 
-app.post('/matches', function(req, res) {
+app.post('/api.matches', function(req, res) {
   client.query(`
     SELECT max(round) as round, max(match_id) as match FROM rounds;
     `).then(results => {
@@ -147,7 +146,7 @@ app.post('/matches', function(req, res) {
     }).then(result => res.send(result))
 })
 
-app.get('/checkmatches', function(req, res) {
+app.get('/api.checkmatches', function(req, res) {
   client.query(`
     SELECT match_id, user_id FROM matches;
     `)
@@ -187,3 +186,4 @@ function insertMatches(maxRound, maxMatch, matches) {
     }
   }
 }
+app.get('/*', (req, res) => res.sendFile('index.html', {root: './public'}));
