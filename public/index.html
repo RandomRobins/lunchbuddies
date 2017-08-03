@@ -15,7 +15,7 @@
     <link type="text/css" rel="stylesheet" href="/vendor/style.css">
 
     <script type="text/x-handlebars-template" id="hb-RosterTemplate">
-        <div class="roster" id="roster-{{id}}">{{name}}</div>
+        <div class="roster {{status}}" id="roster-{{id}}">{{name}}</div>
     </script>
 
     <script type="text/x-handlebars-template" id="hb-RosterSelectionTemplate">
@@ -30,7 +30,7 @@
       <div class="icon-menu"></div>
       <ul>
         <li><a href="/about">About Us</a></li>
-        <li><a href="/roster">Member Roster</a></li>
+        <li><a href="/roster" id="rosterMenuButton">Member Roster</a></li>
       </ul>
     </nav>
 
@@ -67,10 +67,7 @@
 
     <div class="page" id="rosterPage">
       <form>
-        <fieldset>
-          <legend>Current Members:</legend>
-          <div id="roster-display"></div>
-        </fieldset>
+        <div id="roster-display"></div>
         <fieldset>
           <legend>New Member:</legend>
             <input id="name" required="required" type="text" placeholder="Full Name">
@@ -93,6 +90,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.min.js">
   </script>
   <script src="https://cdn.rawgit.com/visionmedia/page.js/master/page.js"></script>
+  <script src="/scripts/controllers/rosterActivation.js"></script>
   <script src="/scripts/models/member.js"></script>
   <script src="/scripts/models/matches.js"></script>
   <script src="/scripts/views/aboutView.js"></script>
@@ -106,4 +104,5 @@
   <script src="/scripts/controllers/routes.js"></script>
   <script src="/scripts/models/reset.js"></script>
   <script src="/scripts/models/randomizer.js"></script>
+  <script src="/scripts/models/onload.js"></script>
 </html>

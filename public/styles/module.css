@@ -1,0 +1,72 @@
+#roster-display {
+  clear: both;
+  align-content: center;
+}
+
+.roster {
+  padding: 5px;
+  border: 5px solid green;
+  width: 100%;
+  display: inline-block;
+  box-sizing: border-box;
+  overflow: hidden;
+  font-size: 100%;
+  font-family: sans-serif;
+  font-family: sans-serif;
+
+}
+
+.inactive {
+  background-color: rgba(0, 0, 0, 0.4);
+  text-decoration: line-through;
+  border: 5px solid red;
+  color: white;
+}
+
+.active {
+  background-color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  border: 5px solid green;
+  color: black;
+}
+
+@media only screen and (min-width: 300px) {
+  .roster {
+    width: 48%;
+  }
+}
+
+@media only screen and (min-width: 405px) {
+  .roster {
+    width: 32%;
+  }
+}
+
+@media only screen and (min-width: 500px) {
+  .roster {
+    width: 24%;
+  }
+}
+@media only screen and (min-width: 600px) {
+  .roster {
+    width: 16%;
+  }
+}
+
+@media only screen and (min-width: 800px) {
+  .roster {
+    width: 12%;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  .roster {
+    width: 9.5%;
+  }
+}
+
+@media only screen and (min-width: 1400px) {
+  .roster {
+    width: 5.5%;
+  }
+}

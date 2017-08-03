@@ -5,7 +5,7 @@ var app = app || {};
 (function (module) {
 
   function rosterController () {
-    app.Member.loadRoster(app.initRosterView)
+    app.initRosterView();
   }
 
   rosterController.addMember = function() {
