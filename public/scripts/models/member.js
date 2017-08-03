@@ -35,7 +35,7 @@ var app = app || {};
     $.post('/checkname', {name :$('#name').val()})
     .then(function(results) {
       if (!results.length) {
-        $.post('/roster3', {name :$('#name').val()}).then(
+        $.post('/roster', {name :$('#name').val()}).then(
           function() {
             if (Member.all.length) {
               let currentID = Member.all[Member.all.length - 1].id + 1;
