@@ -10,8 +10,6 @@
   display: inline-block;
   box-sizing: border-box;
   overflow: hidden;
-  font-size: 100%;
-  font-family: sans-serif;
   font-family: sans-serif;
   line-height: 1em;
   height: 3.2em;
@@ -62,24 +60,6 @@
 }
 @media only screen and (min-width: 600px) {
   .roster {
-    width: 16%;
-  }
-}
-
-@media only screen and (min-width: 800px) {
-  .roster {
-    width: 12%;
-  }
-}
-
-@media only screen and (min-width: 1000px) {
-  .roster {
-    width: 9.5%;
-  }
-}
-
-@media only screen and (min-width: 1400px) {
-  .roster {
-    width: 5.5%;
+    width: 20%;
   }
 }
