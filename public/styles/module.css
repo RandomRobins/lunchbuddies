@@ -13,7 +13,8 @@
   font-size: 100%;
   font-family: sans-serif;
   font-family: sans-serif;
-
+  line-height: 1em;
+  height: 3.2em;
 }
 
 .inactive {
@@ -23,7 +24,19 @@
   color: white;
 }
 
+.match-inactive {
+  display: none;
+}
+
 .active {
+  background-color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  border: 5px solid green;
+  color: black;
+}
+
+.match-active {
+  display: inline-block;
   background-color: rgba(255, 255, 255, 0.7);
   text-decoration: none;
   border: 5px solid green;
