@@ -5,14 +5,14 @@ var app = app || {};
 (function (module) {
 // matches format: {matches: [[3,4,1,2,9],[6,8]]}
   var insertMatches = function (matches) {
-    $.post('/matches', matches)
+    $.post('/api.matches', matches)
   }
 
   module.matchHistory = {};
   module.groupHistory = {};
 
   function loadPreviousMatches (callback) {
-    $.get('/checkmatches')
+    $.get('/api.checkmatches')
     .then(function(results) {
       let data = results.rows;
       data.forEach(function(match) {
@@ -27,7 +27,7 @@ var app = app || {};
   }
 
   function loadPreviousGroups (callback) {
-    $.get('/checkgroups')
+    $.get('/api.checkgroups')
     .then(function(results) {
       let data = results.rows;
       data.forEach(function(group) {
