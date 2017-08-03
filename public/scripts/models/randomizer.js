@@ -147,21 +147,17 @@ var matchDictionary = { '0': [ 13, 20 ],
         memberIDs.splice(memberIDs.indexOf(second), 1)
         // if there's one person left..
       } else {
+        // // if the seenEveryone list is odd, just add the last member to that list
+        // if (seenEveryone.length % 2) {
+        //   seenEveryone.concat(memberIDs);
+        // } else {
+        //   // if there is an odd number of people, prepare for one group of three
+        //   trio.push(memberIDs[0]);
+        // }
+        // memberIDs = [];
       }
     }
     var extraMatches = [];
-
-        // if the seenEveryone list is odd, just add the last member to that list
-        if (seenEveryone.length % 2) {
-          seenEveryone.concat(memberIDs);
-        } else {
-          // if there is an odd number of people, prepare for one group of three
-          trio.push(memberIDs[0]);
-        }
-        memberIDs = [];
-      }
-    }
-
     if (seenEveryone.length % 2) {
       let r = Math.floor(Math.random() * seenEveryone.length);
       trio.push(seenEveryone[r]);
