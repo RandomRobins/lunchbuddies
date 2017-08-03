@@ -10,19 +10,64 @@ a {
   text-decoration: none;
 }
 
+h4 {
+  font-family: 'Milonga', cursive;
+}
+
+p {
+  font-family: sans-serif;
+}
+
+#profile1 {
+  position: relative;
+  padding: 0 1em 0 0;
+  background-color: hsla(0, 81%, 41%, 0.5);
+  border-top: 2px groove red;
+  border-right: 2px groove red;
+  border-bottom: 2px groove red;
+}
+
+#profile2 {
+  position: relative;
+  padding: 0 0 0 1em;
+  background-color: hsla(0, 81%, 41%, 0.5);
+  border-top: 2px groove red;
+  border-bottom: 2px groove red;
+  border-left: 2px groove red;
+}
+
+#profile3 {
+  position: relative;
+  padding: 0 1em 0 0;
+  background-color: hsla(0, 81%, 41%, 0.5);
+  border-top: 2px groove red;
+  border-right: 2px groove red;
+  border-bottom: 2px groove red;
+}
+
 .borderedIMG {
   border-style: outset;
   background-size: cover;
 }
 
+div>h4 {
+  clear: both;
+}
+
 #don {
   content: url("../assets/don.jpg");
+  float: left;
+  margin-right: 1em;
 }
 
 #james {
   content: url("../assets/james.jpg");
+  float: right;
+  margin-left: 1em;
 }
 
 #roscoe {
   content: url("../assets/roscoe.jpg");
+  float: left;
+  margin-right: 1em;
 }

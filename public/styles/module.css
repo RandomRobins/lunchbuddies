@@ -16,7 +16,7 @@
 }
 
 .inactive {
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: hsla(0, 0%, 0%, 0.4);
   text-decoration: line-through;
   border: 5px solid red;
   color: white;
@@ -27,7 +27,7 @@
 }
 
 .active {
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: hsla(0, 0%, 100%, 0.7);
   text-decoration: none;
   border: 5px solid green;
   color: black;
@@ -35,7 +35,7 @@
 
 .match-active {
   display: inline-block;
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: hsla(0, 0%, 100%, 0.7);
   text-decoration: none;
   border: 5px solid green;
   color: black;
@@ -49,6 +49,7 @@
   max-width: 50em;
   display: inline-block;
   border-radius: 15% 5%;
+  /*padding-left: center;*/
   background-color: hsla(102, 75%, 41%, 0.8);
 }
 

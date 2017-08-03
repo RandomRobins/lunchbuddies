@@ -5,18 +5,18 @@ body {
 h1 {
   font-family: 'Milonga', cursive;
   font-size: 3em;
-  text-align: center;
+  display: block;
 }
 
-#splashPage {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+img {
+  float: left;
+  margin: 10px;
 }
 
 #splashTitle {
-  justify-content: center;
+  position: relative;
 }
+
 
 .splashButton {
   color: black;
