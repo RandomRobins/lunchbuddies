@@ -24,7 +24,8 @@ I grew up in West Seattle and have lived most of my life in the greater Seattle 
 
 ## Don Pham
 
-Hi, my name's Don, and I'm a liberal arts major. Sometimes I use computers, like today.
+I graduated from the UW with a degree in Comparative History of Ideas and a focus in media theory.  I've spent the past decade working in ethnic media, where I managed to shoot and edit over 200 news clips in a language he does not understand.  So I know how to adapt.  I am grateful for WTIA’s Apprenti program for taking a chance on someone from a non-traditional background.
+
 
 ## Roscoe B. Bass III
 
