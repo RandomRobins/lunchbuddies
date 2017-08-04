@@ -1,7 +1,9 @@
 a #matchPageButton {
-  position: absolute;
-  left: 25em;
+  max-width: 20%;
+  position: fixed;
+  right: 3%;
   margin-top: 0;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
 }
 
 a {
