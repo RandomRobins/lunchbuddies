@@ -8,14 +8,16 @@ var app = app || {};
     $('#roster-display').empty();
     $('.page').hide();
     $('#rosterPage').show();
-
     $('.main-nav').show();
     app.Member.all.map(function(member) {
       let rosterCompiler = Handlebars.compile($('#hb-RosterTemplate').html());
       let compiledRoster = rosterCompiler(member);
       $('#roster-display').append(compiledRoster);
     })
-    $('#addMember').on('click', app.rosterController.addMember);
+    if (!app.$addMemberHandler){
+      var $addMemberHandler = $('#addMember').on('click', app.rosterController.addMember);
+      module.$addMemberHandler = $addMemberHandler;
+    }
     app.rosterChangeActivation();
   }
 

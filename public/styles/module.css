@@ -71,11 +71,18 @@
   .roster {
     width: 48%;
   }
+  fieldset {
+    width: 70%;
+  }
+
 }
 
 @media only screen and (min-width: 405px) {
   .roster {
     width: 32%;
+  }
+  fieldset {
+    width: 70%;
   }
 }
 

@@ -23,7 +23,6 @@
         <div class="roster match-{{status}}" id="selection-roster-{{id}}">{{name}}</div>
     </script>
 
-
   </head>
   <body>
 
@@ -70,13 +69,13 @@
     <div class="page" id="rosterPage">
       <form>
         <a href="/matches"><button id="matchPageButton">Match Page</button></a>
-        <p><b>Use the form below to add new members</b></p>
-        <div id="roster-display"></div>
         <fieldset>
           <legend>New Member:</legend>
-            <input id="name" required="required" type="text" placeholder="Full Name">
-            <button id="addMember">Add Member</button>
+          <input id="name" required="required" type="text" placeholder="Full Name">
+          <button id="addMember">Add Member</button>
         </fieldset>
+        <p><b>Use the form below to add new members</b></p>
+        <div id="roster-display"></div>
       </form>
     </div>
 
@@ -112,5 +111,4 @@
   <script src="/scripts/controllers/rostercontroller.js"></script>
   <script src="/scripts/controllers/splashcontroller.js"></script>
   <script src="/scripts/controllers/routes.js"></script>
-  <!-- <script src="/scripts/models/onload.js"></script> -->
 </html>
