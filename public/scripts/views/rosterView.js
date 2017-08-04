@@ -14,8 +14,10 @@ var app = app || {};
       let compiledRoster = rosterCompiler(member);
       $('#roster-display').append(compiledRoster);
     })
-    var $addMemberHandler = app.$addMemberHandler || $('#addMember').on('click', app.rosterController.addMember);
-    module.$addMemberHandler = $addMemberHandler;
+    if (!app.$addMemberHandler){
+      var $addMemberHandler = $('#addMember').on('click', app.rosterController.addMember);
+      module.$addMemberHandler = $addMemberHandler;
+    }
     app.rosterChangeActivation();
   }
 

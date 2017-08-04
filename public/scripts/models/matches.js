@@ -54,6 +54,7 @@ var app = app || {};
       }
       $.post('/api.matches', {matches: matchToSave})
       .then(function() {
+        if (app.latestMatch) alert('Your matches have been saved.');
         app.latestMatch = null;
         callback();
       })

@@ -13,22 +13,28 @@ var app = app || {};
       let compiledRoster = rosterCompiler(member);
       $('#rosterSelection').append(compiledRoster);
     })
-    let $getMatchesHandler = app.$getMatchesHandler || $('#getMatches').on('click', app.matchesController.getMatches);
-    module.$getMatchesHandler = $getMatchesHandler;
+    if (!app.$getMatchesHandler) {
+      var $getMatchesHandler = $('#getMatches').on('click', app.matchesController.getMatches);
+      module.$getMatchesHandler = $getMatchesHandler;
+    }
     app.rosterChangeActivation();
-    let $funkyFreshHandler = app.$funkyFreshHandler || $('#funkyfresh').on('click', function() {
-      let text = $('#funkyfresh').text()
-      if (text == 'Showing All Matches') {
-        $('#funkyfresh').text('New Connections Only')
-        $('.funkypair').css('display','none');
-      } else {
-        $('#funkyfresh').text('Showing All Matches')
-        $('.funkypair').css('display','block');
-      }
-    });
-    module.$funkyFreshHandler = $funkyFreshHandler;
-    let $saveMatchesHandler = app.saveMatchesHandler || $('#savematches').on('click', app.matchesController.postMatches);
-    module.$saveMatchesHandler = $saveMatchesHandler;
+    if (!app.$funkyFreshHandler) {
+      var $funkyFreshHandler = $('#funkyfresh').on('click', function() {
+        let text = $('#funkyfresh').text()
+        if (text == 'Showing All Matches') {
+          $('#funkyfresh').text('New Connections Only')
+          $('.funkypair').css('display','none');
+        } else {
+          $('#funkyfresh').text('Showing All Matches')
+          $('.funkypair').css('display','block');
+        }
+      });
+      module.$funkyFreshHandler = $funkyFreshHandler;
+    }
+    if (!app.$saveMatchesHandler) {
+      var $saveMatchesHandler = $('#savematches').on('click', app.matchesController.postMatches);
+      module.$saveMatchesHandler = $saveMatchesHandler;
+    }
   }
 
 
