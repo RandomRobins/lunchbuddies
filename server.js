@@ -7,8 +7,9 @@ const pg = require('pg');
 const PORT = process.env.PORT || 3000;
 const app = express();
 
-const conString = 'postgres://localhost:5432/lunchbuddies'
-// const conString = process.env.conString || `postgres://postgres:${process.env.PG_PASSWORD}@localhost:5432/lunchbuddies`;
+// const conString = process.env.DATABASE_URL || 'postgres://localhost:5432/lunchbuddies';
+const conString = process.env.DATABASE_URL || `postgres://postgres:${process.env.PG_PASSWORD}@localhost:5432/lunchbuddies`;
+
 const client = new pg.Client(conString);
 client.connect();
 client.on('error', err => console.error(err));
@@ -107,7 +108,7 @@ app.get('/api.checkgroups', function(req, res) {
 })
 
 
-// for test purposes only
+// for demonstration purposes only
 
 app.get('/api.reset', function(req, res) {
   client.query(`
@@ -165,8 +166,6 @@ function insertMatches(maxRound, maxMatch, matches) {
     function (e) {
       if (e) {
         console.error(e);
-      } else {
-        // res.send('insert complete');
       }
     })
     for (let p=0; p < matches[i].length; p++) {
@@ -179,8 +178,6 @@ function insertMatches(maxRound, maxMatch, matches) {
       function (e) {
         if (e) {
           console.error('e');
-        } else {
-          // res.send('insert complete');
         }
       })
     }

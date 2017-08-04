@@ -7,12 +7,9 @@ var app = app || {};
     $('.roster').on('click', function() {
       let thisID = parseInt($(this).attr('id').split('-')[2]);
       if ($(this).attr('class') == 'roster match-active') {
-        // alert(thisID)
-        // alert(app.Member.all.length)
         app.Member.byID[thisID].status = 'inactive';
         app.Member.byID[thisID].active = false;
         $(this).attr('class', 'roster match-inactive');
-        // alert(app.Member.all[thisID])
         $(this).attr('class', 'roster match-inactive');
       } else if ($(this).attr('class') == 'roster match-inactive') {
         app.Member.byID[thisID].status = 'active';
@@ -23,7 +20,6 @@ var app = app || {};
   }
 
   $(document).ready(function() {
-    // alert('test');
     rosterChangeActivation();
   });
   module.rosterChangeActivation = rosterChangeActivation;
