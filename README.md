@@ -1,5 +1,6 @@
 # lunchbuddies
 An app for creating semi-random pairings
+deployed app link: https://lunchbuddies.herokuapp.com/ 
 
 ## Problem Description
 In large companies there often will be people or groups of people that do not interact regularly.  It can be a challenging problem to find ways to identify where connections need to be made.
