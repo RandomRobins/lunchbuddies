@@ -2,30 +2,6 @@
 
 var app = app || {};
 
-var groupsDictionary = { '1': [ 1, 5, 13, 18 ],
-  '2': [ 2, 6, 19, 22, 26, 30 ],
-  '3': [ 3, 4, 24, 25, 32 ],
-  '4': [ 9, 17, 21 ],
-  '5': [ 7, 10, 12, 14, 20, 29 ],
-  '6': [ 16, 23, 27, 28 ],
-  '7': [ 11, 15, 31 ] };
-var matchDictionary = { '0': [ 13, 20 ],
-  '1': [ 19, 12 ],
-  '2': [ 7, 1 ],
-  '3': [ 22, 17 ],
-  '4': [ 21, 29 ],
-  '5': [ 28, 3 ],
-  '6': [ 15, 32 ],
-  '7': [ 6, 24 ],
-  '8': [ 16, 5 ],
-  '9': [ 4, 30 ],
-  '10': [ 10, 31 ],
-  '11': [ 2, 18 ],
-  '12': [ 8, 23 ],
-  '13': [ 25, 26 ],
-  '14': [ 14, 11 ],
-  '15': [ 27, 9 ] };
-
 (function (module) {
 
   var Random = {};
@@ -60,20 +36,26 @@ var matchDictionary = { '0': [ 13, 20 ],
     memberlist.forEach(function(member) {
       var options = idlist.slice(0)
       var exclude = []
-      for (let key in groupsDictionary) {
-        if (groupsDictionary[key].includes(member.id)) {
-          exclude = exclude.concat(groupsDictionary[key])
+      for (let key in app.groupHistory) {
+        if (app.groupHistory[key].includes(member.id)) {
+          exclude = exclude.concat(app.groupHistory[key])
         }
       }
-      for (let key in matchDictionary) {
-        if (matchDictionary[key].includes(member.id)) {
-          exclude = exclude.concat(matchDictionary[key])
+      for (let key in app.matchHistory) {
+        if (app.matchHistory[key].includes(member.id)) {
+          exclude = exclude.concat(app.matchHistory[key])
         }
       }
-      options = options.filter(function(partner) {
-        return (!exclude.includes(partner));
+      let tempExclude = [];
+      exclude.forEach(function(ex) {
+        if (!tempExclude.includes(ex)) {
+          tempExclude.push(ex);
+        }
       })
-      member.exclusion = exclude;
+      options = options.filter(function(partner) {
+        return (!tempExclude.includes(partner));
+      })
+      member.exclusion = tempExclude;
       member.options = options;
     })
   }
@@ -146,19 +128,20 @@ var matchDictionary = { '0': [ 13, 20 ],
         memberIDs.splice(memberIDs.indexOf(first), 1);
         memberIDs.splice(memberIDs.indexOf(second), 1)
         // if there's one person left..
-      } else {
-        // // if the seenEveryone list is odd, just add the last member to that list
-        // if (seenEveryone.length % 2) {
-        //   seenEveryone.concat(memberIDs);
-        // } else {
-        //   // if there is an odd number of people, prepare for one group of three
-        //   trio.push(memberIDs[0]);
-        // }
-        // memberIDs = [];
       }
     }
-    console.log(seenEveryone + 160);
     var extraMatches = [];
+    let tempSeenEveryone = [];
+    seenEveryone.forEach(function(ex) {
+      if (!tempSeenEveryone.includes(ex)) {
+        tempSeenEveryone.push(ex);
+      }
+    })
+    seenEveryone = tempSeenEveryone.slice(0);
+    if (trio[length] && seenEveryone.length % 2) {
+      seenEveryone.push(trio[0]);
+      trio = [];
+    }
     if (seenEveryone.length % 2) {
       let r = Math.floor(Math.random() * seenEveryone.length);
       trio.push(seenEveryone[r]);
@@ -166,7 +149,7 @@ var matchDictionary = { '0': [ 13, 20 ],
     }
     while (seenEveryone.length >= 2) {
       let r = Math.floor(Math.random() * (seenEveryone.length - 1)) + 1
-      extraMatches.push(seenEveryone[0], seenEveryone[r]);
+      extraMatches.push([seenEveryone[0], seenEveryone[r]]);
       seenEveryone.splice(0, 1);
       seenEveryone.splice(r, 1);
     }
