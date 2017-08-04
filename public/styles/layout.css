@@ -1,7 +1,9 @@
 a #matchPageButton {
-  position: absolute;
-  left: 25em;
+  max-width: 20%;
+  position: fixed;
+  right: 3%;
   margin-top: 0;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
 }
 
 a {
@@ -57,6 +59,18 @@ li {
   margin-top: 5%;
 }
 
+.splashButton {
+  color: hsla(50, 94%, 79%, 0.86);
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: 'Milonga', cursive;
+  font-size: 1em;
+  font-weight: bold;
+  line-height: 10em;
+  text-align: center;
+}
+
 @media only screen and (min-width: 600px) {
   .icon-menu {
     display: none;
@@ -72,5 +86,17 @@ li {
   .main-nav ul li {
     display: inline;
     border-bottom: none;
+  }
+
+  .splashButton {
+    color: hsla(50, 94%, 79%, 0.86);
+    display: inline;
+    position: relative;
+    left: 35%;
+    font-family: 'Milonga', cursive;
+    font-size: 1em;
+    font-weight: bold;
+    line-height: 10em;
+    text-align: center;
   }
 }
