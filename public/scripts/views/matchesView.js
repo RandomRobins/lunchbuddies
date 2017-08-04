@@ -31,7 +31,6 @@ var app = app || {};
     module.$saveMatchesHandler = $saveMatchesHandler;
   }
 
-
   function displayMatches(matchesAll) {
     var matches = matchesAll[0].map(function(match) {
       match = match.map(function(personID) {
