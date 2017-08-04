@@ -150,8 +150,8 @@ var app = app || {};
     while (seenEveryone.length >= 2) {
       let r = Math.floor(Math.random() * (seenEveryone.length - 1)) + 1
       extraMatches.push([seenEveryone[0], seenEveryone[r]]);
-      seenEveryone.splice(0, 1);
       seenEveryone.splice(r, 1);
+      seenEveryone.splice(0, 1);
     }
     // add the odd person out to a random group
     if (trio.length) {

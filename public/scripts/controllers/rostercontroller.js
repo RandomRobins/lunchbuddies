@@ -13,9 +13,5 @@ var app = app || {};
     app.Member.addMember(app.rosterController);
   }
 
-
-
-
-
   module.rosterController = rosterController;
 })(app);

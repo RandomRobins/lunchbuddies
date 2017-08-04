@@ -13,10 +13,10 @@ var app = app || {};
       let compiledRoster = rosterCompiler(member);
       $('#rosterSelection').append(compiledRoster);
     })
-    $('#getMatches').off('click', app.matchesController.getMatches);
-    $('#getMatches').on('click', app.matchesController.getMatches);
+    let $getMatchesHandler = app.$getMatchesHandler || $('#getMatches').on('click', app.matchesController.getMatches);
+    module.$getMatchesHandler = $getMatchesHandler;
     app.rosterChangeActivation();
-    $('#funkyfresh').on('click', function() {
+    let $funkyFreshHandler = app.$funkyFreshHandler || $('#funkyfresh').on('click', function() {
       let text = $('#funkyfresh').text()
       if (text == 'Showing All Matches') {
         $('#funkyfresh').text('New Connections Only')
@@ -26,8 +26,9 @@ var app = app || {};
         $('.funkypair').css('display','block');
       }
     });
-    $('#savematches').off('click', app.matchesController.postMatches);
-    $('#savematches').on('click', app.matchesController.postMatches);
+    module.$funkyFreshHandler = $funkyFreshHandler;
+    let $saveMatchesHandler = app.saveMatchesHandler || $('#savematches').on('click', app.matchesController.postMatches);
+    module.$saveMatchesHandler = $saveMatchesHandler;
   }
 
 
