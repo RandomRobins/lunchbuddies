@@ -5,7 +5,7 @@
 * Julie also wants to track who has met with who to ensure that everyone has a chance to meet each other.
 * As someone who wants to ensure the genetic diversity within his zoo, Noah would like to be able to match potential mates who have not interacted with each other before.
 * Julie would like the ability to incorporate pre-existing pairing data to avoid unnecessary repeats.
-* Julie wants a simple interface to enter and remove employees as they join or leave her company.
+* Julie wants a simple interface to enter an employee as they join her company.
 * As a TA for Code Fellows, Tracy would like a better system for creating pair-programming partners in classes that she is working with.
 * Tracey would like the pair-making to be semi-automated to save her time in performing this task.
 * As a tournament director, Bob would like an application for pairing off competitors.
